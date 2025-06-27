@@ -69,7 +69,11 @@
   text-align: center;
 }
 
-.container-form form input:focus {
+.container-form form .input-char{
+  padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+}
+
+.container-form form .input-char:focus {
   outline:2px solid var(--color-focus-outline);
   outline-offset: 1px;
 }
