@@ -1,68 +1,32 @@
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* === Primary Brand Colors === */
+  --color-primary-blue: #1D4ED8;         /* Main brand blue (buttons, links) */
+  --color-primary-blue-hover: #3B82F6;   /* Hover effect for primary elements */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* === Backgrounds and Surfaces === */
+  --color-surface-light: #F0F9FF;        /* Main background (light mode) */
+  --color-surface-default: #BFDBFE;      /* Card backgrounds or neutral sections */
+  --color-surface-dark: #0F172A;         /* Background for dark mode or footer */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* === Typography Colors === */
+  --color-text-heading: #1E3A8A;         /* Headings and strong text */
+  --color-text-body: #1E293B;            /* Default body text */
+  --color-text-muted: #64748B;           /* Secondary text or placeholders */
+
+  /* === Borders and Dividers === */
+  --color-border-default: #CBD5E1;       /* Standard borders (cards, inputs) */
+  --color-border-muted: #E2E8F0;         /* Subtle borders (light backgrounds) */
+
+  /* === States and Interactions === */
+  --color-focus-outline: #60A5FA;        /* Focus ring for accessibility */
+  --color-disabled-bg: #E0E7FF;          /* Disabled element background */
+  --color-disabled-text: #94A3B8;        /* Disabled element text */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  font-family: monospace;
 }
