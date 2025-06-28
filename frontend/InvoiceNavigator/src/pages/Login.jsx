@@ -1,12 +1,15 @@
 import { useId } from 'react'
 import { DocumentLogo } from '../components/Icons'
 import '../assets/styles/login.css'
-import { Navigate, NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 
 export function Login () {
   const idInputPassword = useId()
   const idInputUsername = useId()
   const idInputRememberMe = useId()
+  const navigate = useNavigate()
+  const { updateUser } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,6 +25,10 @@ export function Login () {
         body: JSON.stringify(formData)
       })
       const json = await response.json()
+      if (json.ok) {
+        updateUser(json.user)
+        return navigate('/home')
+      }
     } catch (error) {
       throw new Error(error)
     }

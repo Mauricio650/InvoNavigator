@@ -104,7 +104,6 @@
 
 .container-form form aside div {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 5px;
   font-size: 1.2rem;
@@ -112,4 +111,23 @@
 
 .container-register {
   font-size: 1.2rem;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  padding: 2px 2px 2px 2px;
+  border: solid 1px var(--color-primary-blue-hover);
+  background: var(--color-primary-blue);
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 300ms ease-in-out;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a:hover {
+  background: var(--color-primary-blue-hover);
+  color: black;
 }

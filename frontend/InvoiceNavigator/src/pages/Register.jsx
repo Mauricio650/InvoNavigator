@@ -1,12 +1,34 @@
 import { useId } from 'react'
 import { DocumentLogo } from '../components/Icons'
 import '../assets/styles/login.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export function Register () {
   const idInputPassword = useId()
   const idInputUsername = useId()
   const idInputFullName = useId()
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const formData = Object.fromEntries(new FormData(e.target))
+    try {
+      const response = await fetch('http://localhost:4000/register', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      const json = await response.json()
+      if (json.ok) {
+        alert('welcome' + json.UserCreated)
+        navigate('/login')
+      }
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
   return (
     <section className='login'>
       <article className='login-container'>
@@ -15,19 +37,19 @@ export function Register () {
           <h1>Invoice Navigator</h1>
         </header>
         <div className='container-form'>
-          <form>
-          <label className='sr-only' htmlFor={idInputFullName}>
+          <form onSubmit={handleSubmit}>
+            <label className='sr-only' htmlFor={idInputFullName}>
               Full name
             </label>
-            <input className='input-char' type='text' id={idInputFullName} required placeholder='Full name' />
+            <input className='input-char' name='fullName' type='text' id={idInputFullName} required placeholder='Full name' />
             <label className='sr-only' htmlFor={idInputUsername}>
               Username
             </label>
-            <input className='input-char' type='text' id={idInputUsername} required placeholder='Username' />
+            <input className='input-char' name='username' type='text' id={idInputUsername} required placeholder='Username' />
             <label className='sr-only' htmlFor={idInputPassword}>
               Password
             </label>
-            <input className='input-char' type='password' id={idInputPassword} required placeholder='Password' />
+            <input className='input-char' name='password' type='password' id={idInputPassword} required placeholder='Password' />
             <aside>
               <button>Sign up</button>
             </aside>
