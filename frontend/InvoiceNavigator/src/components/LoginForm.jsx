@@ -1,6 +1,5 @@
 import { useId } from 'react'
 import { DocumentLogo } from './Icons'
-import '../assets/styles/loginForm.css'
 import { NavLink } from 'react-router-dom'
 import { useUserRequest } from '../hooks/useUserRequests'
 
@@ -15,37 +14,39 @@ export function LoginForm () {
     e.preventDefault()
 
     const formData = Object.fromEntries(new FormData(e.target))
+    console.log(formData)
     loginREQ({ formData })
   }
 
   return (
-    <section className='login'>
-      <article className='login-container'>
-        <header>
+    <section className='w-screen h-screen flex justify-center items-center bg-sky-950'>
+      <article className='flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
+        <header className='flex justify-center items-center flex-col'>
           <DocumentLogo />
-          <h1>Invoice Navigator</h1>
+          <h1>GUARDAR EN LOCAL STORAGE Y AGREGAR ICONOS AL LOGIN Y REGISTER, AGREGAR 'VER CONTRASEÑA, AGREGAR QUE NO SE ENVIE LA PETICION SI ESTÁ MAL LOS INPUTS, EXTRAER DE ALGUNA MANERA LAS ALERTAS'</h1>
         </header>
-        <div className='container-form'>
-          <form onSubmit={handleSubmit}>
+        <div className='mt-8 mb-8'>
+          <form className='flex flex-col justify-center items-center gap-6' onSubmit={handleSubmit}>
             <label className='sr-only' htmlFor={idInputUsername}>
               Username
             </label>
-            <input name='username' className='input-char' type='text' id={idInputUsername} required placeholder='username' />
+            <input className=' py-1 text-center border-1 border-sky-400 rounded-t-xl' name='username' type='text' id={idInputUsername} required placeholder='Username' autoComplete='true' />
             <label className='sr-only' htmlFor={idInputPassword}>
               Password
             </label>
-            <input name='password' className='input-char' type='password' id={idInputPassword} required placeholder='password' />
-            <aside>
-              <button>Log in</button>
-              <div>
-                <label htmlFor={idInputRememberMe}>Remember me</label>
-                <input type='checkbox' name='RememberMe' id={idInputRememberMe} />
+            <input className=' py-1 text-center border-1 border-sky-400 rounded-b-xl' name='password' type='password' id={idInputPassword} required placeholder='Password' />
+            <aside className='flex flex-col justify-center items-center gap-4'>
+              <button className='bg-sky-600 rounded-lg px-2 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>Log in</button>
+              <div className='flex gap-2 justify-baseline'>
+                <label className='sr-only' htmlFor={idInputRememberMe}>Remember me</label>
+                <span className='text-gray-500'>Remember me</span>
+                <input className='rounded-b-2xl' type='checkbox' name='RememberMe' id={idInputRememberMe} />
               </div>
             </aside>
           </form>
         </div>
-        <div className='container-register'>
-          <p>You don´t have an account? <span><NavLink to='/register'>Sign up</NavLink></span></p>
+        <div>
+          <p>You don´t have an account? <span className='bg-sky-600 rounded-lg px-2 py-0.5 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'><NavLink to='/register'>Sign up</NavLink></span></p>
         </div>
       </article>
     </section>

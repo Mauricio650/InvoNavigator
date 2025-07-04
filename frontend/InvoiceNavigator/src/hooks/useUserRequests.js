@@ -7,6 +7,9 @@ export function useUserRequest () {
   const { updateUser } = useAuth()
 
   const loginREQ = async ({ formData }) => {
+    if (formData?.RememberMe) {
+      console.log('prime')
+    }
     try {
       const response = await fetch('http://localhost:4000/login', {
         method: 'POST',
@@ -25,14 +28,20 @@ export function useUserRequest () {
             title: 'Error!',
             text: `[${json.path}] : ${json.message}`,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            background: '#e0f2fe',
+            width: '400px',
+            confirmButtonText: 'Try Again!',
+            confirmButtonColor: 'red'
           })
         } else {
           Swal.fire({
             title: 'Error!',
             text: json.error,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Try Again!',
+            confirmButtonColor: 'red',
+            background: '#e0f2fe',
+            width: '400px'
           })
         }
         throw new Error(`HTTP error! ${response.status}: ${json?.message || json.error}`)
@@ -65,14 +74,20 @@ export function useUserRequest () {
             title: 'Error!',
             text: `[${json.path}] : ${json.message}`,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Try Again!',
+            confirmButtonColor: 'red',
+            background: '#e0f2fe',
+            width: '400px'
           })
         } else {
           Swal.fire({
             title: 'Error!',
             text: json.error,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Try Again!',
+            confirmButtonColor: 'red',
+            background: '#e0f2fe',
+            width: '400px'
           })
         }
         throw new Error(`HTTP error! ${response.status}: ${json?.message || json.error}`)
