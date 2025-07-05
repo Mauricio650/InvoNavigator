@@ -53,7 +53,10 @@ export function LoginForm () {
   }
 
   return (
-    <div>Joderr tio</div>
+    <div>Joderr ssssstio</div>
+    <div>
+      <h1>joderrr</h1>
+    </div>
     <section className='w-screen h-screen flex justify-center items-center bg-sky-800'>
       <article className='bg-sky-950 flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
         <header className='flex justify-center items-center flex-col'>
