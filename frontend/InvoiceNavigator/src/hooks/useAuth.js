@@ -16,7 +16,7 @@ export function useAuth () {
     const json = await res.json()
     if (json.TokenIsValid) {
       return true
-    } {
+    } else {
       return false
     }
   }

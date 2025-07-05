@@ -1,12 +1,16 @@
-import { useId } from 'react'
+import { useId, useState } from 'react'
 import { DocumentLogo } from '../components/Icons'
 import { NavLink } from 'react-router-dom'
 import { useUserRequest } from '../hooks/useUserRequests'
+import { validateSchemaUser } from '../schemas/user'
+import { ErrorToast } from '../toasts/error'
+import { BiShow, BiHide, BiSolidUser, BiSolidLockAlt, BiSolidIdCard } from 'react-icons/bi'
 
 export function RegisterForm () {
   const idInputPassword = useId()
   const idInputUsername = useId()
   const idInputFullName = useId()
+  const [showPassword, setShowPassword] = useState(false)
 
   const { registerREQ } = useUserRequest()
 
@@ -14,35 +18,78 @@ export function RegisterForm () {
     e.preventDefault()
 
     const formData = Object.fromEntries(new FormData(e.target))
+    const result = validateSchemaUser(formData)
+
+    if (!result.success) {
+      const errors = { error: true }
+      result.error.issues.forEach(e => {
+        errors.path = e.path.toLocaleString()
+        errors.message = e.message
+        return errors
+      })
+      return ErrorToast({ path: errors.path, description: errors.message })
+    }
+
     registerREQ({ formData })
   }
   return (
-    <section className='w-screen h-screen flex justify-center items-center bg-sky-950'>
-      <article className='flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
+    <section className='w-screen h-screen flex justify-center items-center bg-sky-800'>
+      <article className=' bg-sky-950 flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
         <header className='flex justify-center items-center flex-col'>
           <DocumentLogo />
         </header>
         <div className='mt-8 mb-8'>
           <form className='flex flex-col justify-center items-center gap-6' onSubmit={handleSubmit}>
+
             <label className='sr-only' htmlFor={idInputFullName}>
               Full name
             </label>
-            <input className=' py-1 text-center border-1 border-sky-400 rounded-t-xl' name='fullName' type='text' id={idInputFullName} required placeholder='Full name' />
-            <label className='sr-only' htmlFor={idInputUsername}>
-              Username
-            </label>
-            <input className=' py-1 text-center border-1 border-sky-400 rounded-t-xl' name='username' type='text' id={idInputUsername} required placeholder='Username' />
-            <label className='sr-only' htmlFor={idInputPassword}>
-              Password
-            </label>
-            <input className=' py-1 text-center border-1 border-sky-400 rounded-t-xl' name='password' type='password' id={idInputPassword} required placeholder='Password' />
+            <div className='relative w-full flex justify-center'>
+              <BiSolidIdCard className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+              <input className=' py-1 px-8 text-center border-1 border-sky-400 rounded-lg' name='fullName' type='text' id={idInputFullName} required placeholder='Full name' />
+            </div>
+
+            <label className='sr-only' htmlFor={idInputUsername}>Username</label>
+            <div className='relative w-full flex justify-center'>
+              <BiSolidUser className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+              <input
+                className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
+                name='username'
+                type='text'
+                id={idInputUsername}
+                required
+                placeholder='Username'
+                autoComplete='true'
+              />
+            </div>
+
+            <label className='sr-only' htmlFor={idInputPassword}>Password</label>
+            <div className='relative w-full flex justify-center'>
+              <BiSolidLockAlt className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+              <input
+                className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
+                name='password'
+                type={showPassword ? 'text' : 'password'}
+                id={idInputPassword}
+                required
+                placeholder='Password'
+              />
+              <button
+                type='button'
+                onClick={() => setShowPassword(!showPassword)}
+                className='cursor-pointer  absolute right-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100'
+                aria-label='Toggle password visibility'
+              >
+                {showPassword ? <BiHide /> : <BiShow />}
+              </button>
+            </div>
             <aside>
-              <button className='bg-sky-600 rounded-lg px-2 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>Sign up</button>
+              <button className='cursor-pointer bg-sky-600 rounded-xs px-2 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>Sign up</button>
             </aside>
           </form>
         </div>
         <div>
-          <p>Do you already have an account? <span className='bg-sky-600 rounded-lg px-2 py-0.5 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'><NavLink to='/'>Log in</NavLink></span></p>
+          <p>Do you already have an account? <span className='cursor-pointer bg-sky-600 rounded-xs px-2 py-0.5 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'><NavLink to='/'>Log in</NavLink></span></p>
         </div>
       </article>
     </section>
