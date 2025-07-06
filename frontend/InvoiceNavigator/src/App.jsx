@@ -9,12 +9,16 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 function App () {
   return (
     <>
-      <Toaster position='top-center' closeButton duration={2000} />
+      <Toaster position='top-center' closeButton duration={2000} richColors />
       <Routes>
         <Route path='/' element={<Navigate to='/login' />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>}>
+          <Route path='settings' element={<ProtectedRoute><h1>Page Settings</h1></ProtectedRoute>} />
+          <Route path='analytics' element={<ProtectedRoute><h1>Page Analytics</h1></ProtectedRoute>} />
+          <Route path='invoices' element={<ProtectedRoute><h1>Page Invoices</h1></ProtectedRoute>} />
+        </Route>
       </Routes>
     </>
   )

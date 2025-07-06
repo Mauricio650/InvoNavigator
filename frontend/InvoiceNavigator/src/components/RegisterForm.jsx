@@ -34,8 +34,8 @@ export function RegisterForm () {
     registerREQ({ formData })
   }
   return (
-    <section className='w-screen h-screen flex justify-center items-center bg-sky-800'>
-      <article className=' bg-sky-950 flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
+    <section className='w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
+      <article className='bg-sky-950 flex flex-col justify-center items-center shadow-sky-950 shadow-lg p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
         <header className='flex justify-center items-center flex-col'>
           <DocumentLogo />
         </header>

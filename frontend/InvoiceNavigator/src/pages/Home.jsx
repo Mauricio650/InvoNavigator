@@ -1,14 +1,17 @@
-import { useAuth } from '../hooks/useAuth'
+import { Outlet } from 'react-router-dom'
+import { Header } from '../components/Header'
 
 export function Home () {
-  const { user } = useAuth()
-  const { fullName } = user.user
-
-  const raw = window.localStorage.getItem('CurrentUser')
-  const currentUser = JSON.parse(raw)
-
   return (
-    <h1>Welcome {fullName || currentUser.token}</h1>
+    <>
+      <article className='flex justify-between w-screen h-screen bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
+        <section>
+          <Header />
+        </section>
+        {Outlet &&
+          <Outlet />}
 
+      </article>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 export function ProtectedRoute ({ children }) {
   const [isLogged, setIsLogged] = useState(false)
@@ -13,6 +14,7 @@ export function ProtectedRoute ({ children }) {
       setIsLogged(res)
 
       if (!res) {
+        toast.info('the session has expired')
         navigate('/')
       }
     }

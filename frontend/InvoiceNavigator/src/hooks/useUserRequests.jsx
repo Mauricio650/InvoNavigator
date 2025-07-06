@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from './useAuth'
 import { ErrorToast } from '../toasts/error'
 import { SuccessToast } from '../toasts/success'
+import { toast } from 'sonner'
 
 export function useUserRequest () {
   const navigate = useNavigate()
   const { updateUser } = useAuth()
+  const API_URL = 'http://localhost:4000/'
 
   const loginREQ = async ({ formData }) => {
     if (formData?.RememberMe) {
@@ -21,7 +23,7 @@ export function useUserRequest () {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/login', {
+      const response = await fetch(API_URL + 'login', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -50,7 +52,7 @@ export function useUserRequest () {
 
   const registerREQ = async ({ formData }) => {
     try {
-      const response = await fetch('http://localhost:4000/register', {
+      const response = await fetch(API_URL + 'register', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -75,5 +77,23 @@ export function useUserRequest () {
     }
   }
 
-  return { loginREQ, registerREQ }
+  const logOutREQ = async () => {
+    const res = await fetch(API_URL + 'logout', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      credentials: 'include'
+    })
+
+    const json = await res.json()
+
+    if (!json) return navigate('/home')
+
+    toast.success('the session has been successfully closed')
+    window.localStorage.removeItem('CurrentUser')
+    navigate('/login')
+  }
+
+  return { loginREQ, registerREQ, logOutREQ }
 }
