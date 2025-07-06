@@ -5,6 +5,7 @@ import { useUserRequest } from '../hooks/useUserRequests'
 import { validateSchemaUser } from '../schemas/user'
 import { ErrorToast } from '../toasts/error'
 import { BiShow, BiHide, BiSolidUser, BiSolidLockAlt, BiSolidIdCard } from 'react-icons/bi'
+import { BtnClassic } from './BtnClassic'
 
 export function RegisterForm () {
   const idInputPassword = useId()
@@ -84,12 +85,16 @@ export function RegisterForm () {
               </button>
             </div>
             <aside>
-              <button className='cursor-pointer bg-sky-600 rounded-xs px-2 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>Sign up</button>
+              <BtnClassic>Sign Up</BtnClassic>
             </aside>
           </form>
         </div>
         <div>
-          <p>Do you already have an account? <span className='cursor-pointer bg-sky-600 rounded-xs px-2 py-0.5 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'><NavLink to='/'>Log in</NavLink></span></p>
+          <p>Do you already have an account?
+            <span className='cursor-pointer font-extrabold text-sky-400 hover:text-sky-50'>
+              <NavLink to='/'> Log in</NavLink>
+            </span>
+          </p>
         </div>
       </article>
     </section>

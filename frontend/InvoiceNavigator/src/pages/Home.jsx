@@ -3,8 +3,12 @@ import { useAuth } from '../hooks/useAuth'
 export function Home () {
   const { user } = useAuth()
   const { fullName } = user.user
+
+  const raw = window.localStorage.getItem('CurrentUser')
+  const currentUser = JSON.parse(raw)
+
   return (
-    <h1>@MUI == SE UTILIZARA LA TABLA Y LA DATE PICKER, SOLO DE CALENDARIO, PARA EL FUTURO Y LA DE CHARTS,LA CHARTS TAMBIEN SE SUSARA MAS ADELANTE EN ANALITYS MAS COMPLEJAS ---WELCOME {fullName}</h1>
+    <h1>Welcome {fullName || currentUser.token}</h1>
 
   )
 }

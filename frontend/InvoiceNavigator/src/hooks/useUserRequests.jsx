@@ -39,6 +39,7 @@ export function useUserRequest () {
 
       if (json.ok) {
         updateUser(json.user)
+        window.localStorage.setItem('CurrentUser', JSON.stringify(json.user))
         return navigate('/home')
       }
     } catch (error) {

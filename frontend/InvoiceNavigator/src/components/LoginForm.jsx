@@ -1,10 +1,12 @@
-import { useId, useState, useEffect, useRef } from 'react'
+import { useId, useState } from 'react'
 import { DocumentLogo } from './Icons'
 import { NavLink } from 'react-router-dom'
 import { useUserRequest } from '../hooks/useUserRequests'
 import { validatePartialUser } from '../schemas/user'
 import { ErrorToast } from '../toasts/error'
 import { BiShow, BiHide, BiSolidUser, BiSolidLockAlt } from 'react-icons/bi'
+import { useRememberMe } from '../hooks/useRememberMe'
+import { BtnClassic } from './BtnClassic'
 
 export function LoginForm () {
   const idInputPassword = useId()
@@ -12,26 +14,7 @@ export function LoginForm () {
   const idInputRememberMe = useId()
   const [showPassword, setShowPassword] = useState(false)
   const { loginREQ } = useUserRequest()
-
-  const inputUsernameREF = useRef()
-  const inputPasswordREF = useRef()
-  const inputRememberREF = useRef()
-
-  useEffect(() => {
-    const rawData = window.localStorage.getItem('formData')
-    if (rawData) {
-      const parsed = JSON.parse(rawData)
-
-      if (inputUsernameREF.current) {
-        inputUsernameREF.current.value = parsed.username
-        inputRememberREF.current.checked = true
-      }
-
-      if (inputPasswordREF.current) {
-        inputPasswordREF.current.value = parsed.password
-      }
-    }
-  }, [])
+  const { inputPasswordREF, inputRememberREF, inputUsernameREF } = useRememberMe()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -53,15 +36,11 @@ export function LoginForm () {
   }
 
   return (
-    <div>Joderr ssssstio</div>
-    <div>
-      <h1>joderrr</h1>
-    </div>
     <section className='w-screen h-screen flex justify-center items-center bg-sky-800'>
       <article className='bg-sky-950 flex flex-col justify-center items-center shadow-xl/20 shadow-sky-50/100 p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
         <header className='flex justify-center items-center flex-col'>
           <DocumentLogo />
-          <h1 style={{ fontSize: '4rem' }}>extraer usse effect ----- HACER LOGOUT ----- PERSINTENCIA DE LA SESION CON LOCAL STORAGE Y EL TOKEN</h1>
+          <h1 style={{ fontSize: '4rem' }}>HACER LOGOUT ----- PERSINTENCIA DE LA SESION CON LOCAL STORAGE Y EL TOKEN</h1>
         </header>
 
         <div className='mt-8 mb-8'>
@@ -105,7 +84,7 @@ export function LoginForm () {
             </div>
 
             <aside className='flex flex-col justify-center items-center gap-4'>
-              <button className='cursor-pointer bg-sky-600 rounded-xs px-2 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>Log in</button>
+              <BtnClassic>Log in</BtnClassic>
               <div className='flex gap-2 justify-baseline'>
                 <label className='sr-only' htmlFor={idInputRememberMe}>Remember me</label>
                 <span className='text-gray-500'>Remember me</span>
@@ -116,13 +95,14 @@ export function LoginForm () {
         </div>
 
         <div>
-          <p>You don’t have an account?{' '}
-            <span className='cursor-pointer bg-sky-600 rounded-xs px-2 py-0.5 ring-1 ring-sky-50 hover:bg-sky-700 shadow-lg shadow-sky-500/50'>
-              <NavLink to='/register'>Sign up</NavLink>
+          <p>You don’t have an account?
+            <span className='cursor-pointer font-extrabold text-sky-400 hover:text-sky-50'>
+              <NavLink to='/register'> Sign up</NavLink>
             </span>
           </p>
         </div>
       </article>
+
     </section>
   )
 }
