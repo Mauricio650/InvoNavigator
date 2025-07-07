@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { DocumentLogo } from './Icons'
+import { DocumentLogo2 } from './Icons'
 import { NavLink } from 'react-router-dom'
 import { useUserRequest } from '../hooks/useUserRequests'
 import { validatePartialUser } from '../schemas/user'
@@ -39,7 +39,7 @@ export function LoginForm () {
     <section className='w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
       <article className='bg-sky-950 flex flex-col justify-center items-center shadow-sky-950 shadow-lg p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
         <header className='flex justify-center items-center flex-col'>
-          <DocumentLogo />
+          <DocumentLogo2 />
         </header>
 
         <div className='mt-8 mb-8'>

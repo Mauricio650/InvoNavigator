@@ -1,5 +1,5 @@
 import { BiAnalyse, BiExit, BiHome, BiSlider, BiTable } from 'react-icons/bi'
-import { DocumentLogo } from './Icons'
+import { DocumentLogo2 } from './Icons'
 import { SuperLi } from './SuperLi'
 import { useAuth } from '../hooks/useAuth'
 import { useUserRequest } from '../hooks/useUserRequests'
@@ -9,9 +9,9 @@ export function Header () {
   const { logOutREQ } = useUserRequest()
 
   return (
-    <header className='flex flex-col gap-12 w-xs h-full bg-sky-950 text-white font-mono'>
+    <header className='flex flex-col gap-12 w-xs h-full bg-sky-950/95 text-white font-mono'>
       <div className='flex items-center'>
-        <DocumentLogo />
+        <DocumentLogo2 />
         <div>
           <h1 className=' text-sky-50 text-2xl'>{user.user.username}</h1>
           <span className='font-bold text-sky-500 text-ms'>{user.user.fullName}</span>
