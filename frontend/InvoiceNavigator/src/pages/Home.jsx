@@ -1,37 +1,18 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header'
-import { useEffect, useState } from 'react'
 
 export function Home () {
-  /* const [data, setData] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('http://localhost:4000/home/invoices', {
-          credentials: 'include'
-        })
-        const json = await res.json()
-        setData(json)
-      } catch (err) {
-        console.error('Error al traer datos:', err)
-      }
-    }
-
-    fetchData()
-  }, [])
-
-  console.log(data) */
-
   return (
     <>
       <article className='flex justify-between w-screen h-screen bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500 font-mono'>
         <section className='w-xs  shadow-xl backdrop-blur-md   shadow-sky-950'>
           <Header />
         </section>
+
         <section className='w-2/3 shadow-gray-500 p-10'>
           <Outlet />
         </section>
+
         <section className='w-1/4 shadow-xl backdrop-blur-md   shadow-sky-700'>
 
           <div className='w-full h-full bg-sky-950/0 flex flex-col items-center p-6 gap-10'>

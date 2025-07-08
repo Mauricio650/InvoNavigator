@@ -9,7 +9,7 @@ export function Header () {
   const { logOutREQ } = useUserRequest()
 
   return (
-    <header className='flex flex-col gap-12 w-xs h-full bg-sky-950/95 text-white font-mono'>
+    <header className='flex flex-col gap-12 w-xs h-full bg-sky-950 text-white font- shadow-lg'>
       <div className='flex items-center'>
         <DocumentLogo2 />
         <div>
