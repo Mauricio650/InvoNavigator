@@ -28,8 +28,8 @@ export function StatusMonthly () {
 
         <article className=' w-1/3 flex justify-center items-center '>
           <div className='  ring-2 ring-sky-50 flex flex-col gap-1 justify-center items-center bg-lime-500/30 text-sky-900 backdrop-blur-lg rounded-xl shadow-lg  p-5 '>
-          <BiCheck />
-<span className='text-xl'>Accepted </span>
+            <BiCheck />
+            <span className='text-xl'>Accepted </span>
             <p className='text-sky-950 font-bold text-xl'>{statusMonth.accepted}</p>
           </div>
 
@@ -37,8 +37,8 @@ export function StatusMonthly () {
 
         <article className='w-1/3 flex  justify-center items-center '>
           <div className=' ring-2 ring-sky-50 flex flex-col gap-1 justify-center items-center backdrop-blur-lg rounded-xl shadow-lg bg-yellow-300/30 text-sky-900 p-5'>
-          <BiTime></BiTime>
-            <span className='text-xl'>Pending</span> 
+            <BiTime />
+            <span className='text-xl'>Pending</span>
             <p className='text-sky-950 font-bold text-xl'>{statusMonth.pending}</p>
           </div>
 
@@ -46,8 +46,8 @@ export function StatusMonthly () {
 
         <article className='w-1/3 flex justify-center items-center'>
           <div className='  ring-2 ring-sky-50  flex flex-col gap-1 justify-center items-center backdrop-blur-md rounded-xl shadow-lg bg-red-400/30 text-sky-900 p-5'>
-          <BiError></BiError>
-<span className='text-xl'>Rejected</span> 
+            <BiError />
+            <span className='text-xl'>Rejected</span>
             <p className='text-sky-950 font-bold text-xl'>{statusMonth.rejected}</p>
           </div>
 

@@ -1,7 +1,11 @@
 import { useAuth } from '../hooks/useAuth'
+import { useTasks } from '../hooks/taskManager/useTasks'
 
-export function TaskProgressBar ({ completed, total }) {
-  const percentage = total > 0 ? Math.round((completed / total) * 100) : 0
+export function TaskProgressBar () {
+  const { tasks } = useTasks()
+  const completedTasks = tasks.filter(t => t.status === 'completed')
+
+  const percentage = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0
   const { user } = useAuth()
   const { username } = user.user
 

@@ -2,7 +2,11 @@ import { useContext } from 'react'
 import { InvoicesContext } from '../context/invoicesContext'
 
 export function useInvoices () {
-  const { invoicesData, updateInvoicesData, loading, error } = useContext(InvoicesContext)
+  const context = useContext(InvoicesContext)
 
-  return { invoicesData, updateInvoicesData, loading, error }
+  if (context === undefined) {
+    throw new Error('useInvoices must be used within a InvoicesProvider')
+  }
+
+  return context
 }
