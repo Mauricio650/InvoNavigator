@@ -5,14 +5,6 @@ import { toast } from 'sonner'
 export const TasksContext = createContext()
 
 const initialState = [
-  { task: 'play valorant', status: 'pending', id: Date.now() },
-  { task: 'tarea21 1', status: 'completed', id: Date.now() },
-  { task: 'playdasdsad', status: 'pending', id: Date.now() },
-  { task: 'playddasd', status: 'pending', id: Date.now() },
-  { task: 'play 4444', status: 'completed', id: Date.now() },
-  { task: 'play 222', status: 'pending', id: Date.now() },
-  { task: 'play ww', status: 'completed', id: Date.now() },
-  { task: 'play ww', status: 'completed', id: Date.now() }
 ]
 
 const reducer = (state, action) => {
@@ -20,32 +12,32 @@ const reducer = (state, action) => {
 
   switch (actionType) {
     case 'ADD_TASK' : {
-      if (state.length >= 10) {
-        toast.info('You can only have 10 tasks')
+      if (state.length >= 20) {
+        toast.info('You can only have 20 tasks')
         return state
       }
       const taskClone = structuredClone(state)
-      taskClone.push(actionPayload)
+      const indexTask = taskClone.findIndex(t => t.task === actionPayload)
+      if (indexTask >= 0) {
+        toast.info('That task is already on the list')
+        return state
+      }
+      taskClone.push({ id: Date.now(), task: actionPayload, status: 'pending' })
       return taskClone
     }
 
     case 'CHANGE_STATUS_TASK' : {
-      const { id, status } = actionPayload
-      const indexTask = state.findIndex((t) => t.id === id)
+      const indexTask = state.findIndex((t) => t.id === actionPayload)
       const taskClone = structuredClone(state)
-      taskClone[indexTask].status = status === 'C' ? 'completed' : 'pending'
+      taskClone[indexTask].status = 'completed'
       return taskClone
     }
 
     case 'DELETE_TASK' : {
-      const { id } = actionPayload
       const taskClone = structuredClone(state)
-      taskClone.filter(t => t.id !== id)
-      return taskClone
-    }
+      const newClone = taskClone.filter(t => t.id !== actionPayload)
 
-    case 'CLEAR_TASK' : {
-      return []
+      return newClone
     }
   }
 
@@ -59,24 +51,19 @@ export function TaskProvider ({ children }) {
     type: 'ADD_TASK',
     payload: task
   })
-  const changeStatusTask = object => dispatch({
+  const changeStatusTask = id => dispatch({
     type: 'CHANGE_STATUS_TASK',
-    payload: object
+    payload: id
   })
 
-  const deleteTask = task => dispatch({
+  const deleteTask = id => dispatch({
     type: 'DELETE_TASK',
-    payload: task
-  })
-
-  const clearTasks = () => dispatch({
-    type: 'CLEAR_TASK',
-    payload: true
+    payload: id
   })
 
   return (
     <TasksContext.Provider
-      value={{ tasks: state, newTask, clearTasks, deleteTask, changeStatusTask }}
+      value={{ tasks: state, newTask, deleteTask, changeStatusTask }}
     >
       {children}
     </TasksContext.Provider>

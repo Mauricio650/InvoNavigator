@@ -1,10 +1,9 @@
 import { TaskProgressBar } from './TaskProgressBar'
 import '../assets/styles/animations.css'
 import { StatusMonthly } from './StatusMonthly'
-import { useTasks } from '../hooks/taskManager/useTasks'
+import { Tasks } from './tasks/Tasks'
 
 export function HomeSummary () {
-  const { tasks } = useTasks()
   return (
 
     <article className='w-full h-full flex flex-col'>
@@ -16,14 +15,10 @@ export function HomeSummary () {
         <StatusMonthly />
       </section>
 
-      <section className='w-full h-2/2'>
-        <div className='bg-white/60 backdrop-blur-3xl p-4 rounded-xl shadow h-full'>
-          <ul className='space-y-2'>
-            {tasks.map(t => <li key={t.id}>{t.task}</li>)}
-          </ul>
-
-        </div>
+      <section className='w-full h-2/2 overflow-y-scroll bg-white/60 backdrop-blur-md p-4 rounded-xl shadow-lg'>
+        <Tasks />
       </section>
+
     </article>
 
   )
