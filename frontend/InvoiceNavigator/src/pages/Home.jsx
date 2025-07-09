@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header'
+import { StatusDaily } from '../components/StatusDaily'
 
 export function Home () {
   return (
@@ -15,13 +16,9 @@ export function Home () {
 
         <section className='w-1/4 shadow-xl backdrop-blur-md   shadow-sky-700'>
 
-          <div className='w-full h-full bg-sky-950/0 flex flex-col items-center p-6 gap-10'>
+          <article className='w-full h-full bg-sky-950/0 flex flex-col items-center p-6 gap-10'>
 
-            <div className='h-1/6 w-full bg-sky-100 text-sky-900 backdrop-blur-md p-4 rounded-xl shadow'>
-              <h1 className='text-center'>
-                Container-invoice per day pending,rejected,accepted,
-              </h1>
-            </div>
+            <StatusDaily />
 
             <div className='h-1/6 w-full  bg-sky-100 text-sky-900 backdrop-blur-md p-4 rounded-xl shadow'>
               <h1 className='text-center'>
@@ -35,7 +32,7 @@ export function Home () {
               </h1>
             </div>
 
-          </div>
+          </article>
 
         </section>
 

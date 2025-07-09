@@ -34,69 +34,90 @@ export function RegisterForm () {
     registerREQ({ formData })
   }
   return (
-    <section className='w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
-      <article className='bg-sky-950 flex flex-col justify-center items-center shadow-sky-950 shadow-lg p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
-        <header className='flex justify-center items-center flex-col'>
-          <DocumentLogo2 />
-        </header>
-        <div className='mt-8 mb-8'>
-          <form className='flex flex-col justify-center items-center gap-6' onSubmit={handleSubmit}>
 
-            <label className='sr-only' htmlFor={idInputFullName}>
-              Full name
-            </label>
-            <div className='relative w-full flex justify-center'>
-              <BiSolidIdCard className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
-              <input className=' py-1 px-8 text-center border-1 border-sky-400 rounded-lg' name='fullName' type='text' id={idInputFullName} required placeholder='Full name' />
-            </div>
+    <div className='min-h-screen w-full relative bg-white'>
+      <div
+        className='absolute inset-0 z-0'
+        style={{
+          background: '#ffffff',
+          backgroundImage: `
+        radial-gradient(
+          circle at top center,
+          rgba(70, 130, 180, 0.5),
+          transparent 70%
+        )
+      `,
+          filter: 'blur(80px)',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
 
-            <label className='sr-only' htmlFor={idInputUsername}>Username</label>
-            <div className='relative w-full flex justify-center'>
-              <BiSolidUser className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
-              <input
-                className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
-                name='username'
-                type='text'
-                id={idInputUsername}
-                required
-                placeholder='Username'
-                autoComplete='true'
-              />
-            </div>
+      <section className='w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
+        <article className='z-2 bg-sky-950 flex flex-col justify-center items-center shadow-sky-950 shadow-lg p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
+          <header className='flex justify-center items-center flex-col'>
+            <DocumentLogo2 />
+          </header>
+          <div className='mt-8 mb-8'>
+            <form className='flex flex-col justify-center items-center gap-6' onSubmit={handleSubmit}>
 
-            <label className='sr-only' htmlFor={idInputPassword}>Password</label>
-            <div className='relative w-full flex justify-center'>
-              <BiSolidLockAlt className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
-              <input
-                className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
-                name='password'
-                type={showPassword ? 'text' : 'password'}
-                id={idInputPassword}
-                required
-                placeholder='Password'
-              />
-              <button
-                type='button'
-                onClick={() => setShowPassword(!showPassword)}
-                className='cursor-pointer  absolute right-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100'
-                aria-label='Toggle password visibility'
-              >
-                {showPassword ? <BiHide /> : <BiShow />}
-              </button>
-            </div>
-            <aside>
-              <BtnClassic>Sign Up</BtnClassic>
-            </aside>
-          </form>
-        </div>
-        <div>
-          <p>Do you already have an account?
-            <span className='cursor-pointer font-extrabold text-sky-400 hover:text-sky-50'>
-              <NavLink to='/'> Log in</NavLink>
-            </span>
-          </p>
-        </div>
-      </article>
-    </section>
+              <label className='sr-only' htmlFor={idInputFullName}>
+                Full name
+              </label>
+              <div className='relative w-full flex justify-center'>
+                <BiSolidIdCard className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+                <input className=' py-1 px-8 text-center border-1 border-sky-400 rounded-lg' name='fullName' type='text' id={idInputFullName} required placeholder='Full name' />
+              </div>
+
+              <label className='sr-only' htmlFor={idInputUsername}>Username</label>
+              <div className='relative w-full flex justify-center'>
+                <BiSolidUser className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+                <input
+                  className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
+                  name='username'
+                  type='text'
+                  id={idInputUsername}
+                  required
+                  placeholder='Username'
+                  autoComplete='true'
+                />
+              </div>
+
+              <label className='sr-only' htmlFor={idInputPassword}>Password</label>
+              <div className='relative w-full flex justify-center'>
+                <BiSolidLockAlt className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
+                <input
+                  className='py-1 px-8 text-center border-1 border-sky-400 rounded-lg'
+                  name='password'
+                  type={showPassword ? 'text' : 'password'}
+                  id={idInputPassword}
+                  required
+                  placeholder='Password'
+                />
+                <button
+                  type='button'
+                  onClick={() => setShowPassword(!showPassword)}
+                  className='cursor-pointer  absolute right-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100'
+                  aria-label='Toggle password visibility'
+                >
+                  {showPassword ? <BiHide /> : <BiShow />}
+                </button>
+              </div>
+              <aside>
+                <BtnClassic>Sign Up</BtnClassic>
+              </aside>
+            </form>
+          </div>
+          <div>
+            <p>Do you already have an account?
+              <span className='cursor-pointer font-extrabold text-sky-400 hover:text-sky-50'>
+                <NavLink to='/'> Log in</NavLink>
+              </span>
+            </p>
+          </div>
+        </article>
+      </section>
+
+    </div>
+
   )
 }
