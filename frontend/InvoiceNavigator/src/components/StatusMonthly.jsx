@@ -1,12 +1,17 @@
 import { toast } from 'sonner'
-import { useInvoices } from '../hooks/useInvoices'
-import { statusByDate } from '../logic/statusByDate'
 import { BiCheck, BiError, BiTime } from 'react-icons/bi'
+import { InvoicesContext } from '../context/invoicesContext'
+import { useContext } from 'react'
+import { statusByDate } from '../logic/statusByDate'
 
 export function StatusMonthly () {
-  const { invoicesData, loading, error } = useInvoices()
+  const { invoicesData, error, loading } = useContext(InvoicesContext)
 
   const statusMonth = statusByDate(invoicesData)
+
+  if (error)toast.warning('Error retrieving information of monthly invoices status, please try again')
+
+  /* const statusMonth = { pending: 1, accepted: 2, rejected: 10 } */
 
   if (loading) return <h1>Loading....</h1>
 
@@ -21,8 +26,6 @@ export function StatusMonthly () {
           Monthly Invoice Status
         </h1>
       </header>
-
-      {error && toast.warning('Error retrieving information of monthly invoices status, please try again')}
 
       <article className='w-full h-full" flex justify-center items-center'>
 

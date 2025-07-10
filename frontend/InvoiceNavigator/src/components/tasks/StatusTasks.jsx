@@ -1,8 +1,9 @@
-import { useTasks } from '../../hooks/taskManager/useTasks'
+import { useContext } from 'react'
 import { FormNewTask } from './FormNewTask'
+import { TasksContext } from '../../context/tasksContext'
 
 export function StatusTasks () {
-  const { tasks } = useTasks()
+  const { tasks } = useContext(TasksContext)
 
   return (
     <article className='h-1/2 w-full  bg-gradient-to-r from-indigo-100 to-white rounded-lg  px-6 py-4 mt-4 flex flex-col gap-4 justify-center items-center'>

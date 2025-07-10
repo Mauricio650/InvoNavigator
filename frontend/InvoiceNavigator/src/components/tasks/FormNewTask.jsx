@@ -1,16 +1,18 @@
 import { useRef } from 'react'
 import { useTasks } from '../../hooks/taskManager/useTasks'
 import { toast } from 'sonner'
+import { useAuth } from '../../hooks/useAuth'
 
 export function FormNewTask () {
   const inputRef = useRef(null)
   const { newTask } = useTasks()
+  const { user } = useAuth()
 
   const handleSubmit = e => {
     e.preventDefault()
     const regex = /[^a-zA-Z0-9 ]|^[^a-zA-Z]*$/
     if (regex.test(inputRef.current.value)) return toast.warning('Invalid characters, please try again!')
-    newTask(inputRef.current.value)
+    newTask({ task: inputRef.current.value, user: user.user.username })
     inputRef.current.value = ''
   }
 

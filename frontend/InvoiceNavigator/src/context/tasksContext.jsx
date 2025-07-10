@@ -1,69 +1,33 @@
 import { useReducer, createContext } from 'react'
-
-import { toast } from 'sonner'
+import { reducer, initialState } from './reducers/taskReducer'
 
 export const TasksContext = createContext()
-
-const initialState = [
-]
-
-const reducer = (state, action) => {
-  const { type: actionType, payload: actionPayload } = action
-
-  switch (actionType) {
-    case 'ADD_TASK' : {
-      if (state.length >= 20) {
-        toast.info('You can only have 20 tasks')
-        return state
-      }
-      const taskClone = structuredClone(state)
-      const indexTask = taskClone.findIndex(t => t.task === actionPayload)
-      if (indexTask >= 0) {
-        toast.info('That task is already on the list')
-        return state
-      }
-      taskClone.push({ id: Date.now(), task: actionPayload, status: 'pending' })
-      return taskClone
-    }
-
-    case 'CHANGE_STATUS_TASK' : {
-      const indexTask = state.findIndex((t) => t.id === actionPayload)
-      const taskClone = structuredClone(state)
-      taskClone[indexTask].status = 'completed'
-      return taskClone
-    }
-
-    case 'DELETE_TASK' : {
-      const taskClone = structuredClone(state)
-      const newClone = taskClone.filter(t => t.id !== actionPayload)
-
-      return newClone
-    }
-  }
-
-  return state
-}
 
 export function TaskProvider ({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const newTask = task => dispatch({
+  const newTask = ({ task, user }) => dispatch({
     type: 'ADD_TASK',
-    payload: task
+    payload: { task, user }
   })
-  const changeStatusTask = id => dispatch({
+  const changeStatusTask = ({ id, user }) => dispatch({
     type: 'CHANGE_STATUS_TASK',
-    payload: id
+    payload: { id, user }
   })
 
-  const deleteTask = id => dispatch({
+  const deleteTask = ({ id, user }) => dispatch({
     type: 'DELETE_TASK',
-    payload: id
+    payload: { id, user }
+  })
+
+  const setInitialState = (initialState) => dispatch({
+    type: 'SET_INITIAL_STATE',
+    payload: initialState
   })
 
   return (
     <TasksContext.Provider
-      value={{ tasks: state, newTask, deleteTask, changeStatusTask }}
+      value={{ tasks: state, newTask, deleteTask, changeStatusTask, setInitialState }}
     >
       {children}
     </TasksContext.Provider>

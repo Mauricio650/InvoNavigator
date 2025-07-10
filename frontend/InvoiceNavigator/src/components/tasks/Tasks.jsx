@@ -1,8 +1,11 @@
-import { useTasks } from '../../hooks/taskManager/useTasks'
+import { useContext } from 'react'
 import { BiCheckCircle, BiTimeFive, BiTrash, BiCheck, BiTaskX } from 'react-icons/bi'
+import { TasksContext } from '../../context/tasksContext'
+import { useAuth } from '../../hooks/useAuth'
 
 export function Tasks () {
-  const { tasks, deleteTask, changeStatusTask } = useTasks()
+  const { tasks, deleteTask, changeStatusTask } = useContext(TasksContext)
+  const { user } = useAuth()
   return (
     <div className='rounded-xl h-full w-full'>
       {tasks?.length === 0 && (
@@ -37,7 +40,7 @@ export function Tasks () {
             <div className='flex items-center gap-2'>
               {task.status !== 'completed' && (
                 <button
-                  onClick={() => changeStatusTask(task.id)}
+                  onClick={() => changeStatusTask({ id: task.id, user: user.user.username })}
                   title='Mark as done'
                   className='text-green-600 hover:text-green-800 transition'
                 >
@@ -45,7 +48,7 @@ export function Tasks () {
                 </button>
               )}
               <button
-                onClick={() => deleteTask(task.id)}
+                onClick={() => deleteTask({ id: task.id, user: user.user.username })}
                 title='Delete'
                 className='text-red-500 hover:text-red-700 transition'
               >

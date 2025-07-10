@@ -1,16 +1,19 @@
-import { useInvoices } from '../hooks/useInvoices'
 import { toast } from 'sonner'
 import { statusByDate } from '../logic/statusByDate'
 import { BiCheck, BiError, BiTime } from 'react-icons/bi'
+import { useContext } from 'react'
+import { InvoicesContext } from '../context/invoicesContext'
 
 export function StatusDaily () {
-  const { invoicesData, loading, error } = useInvoices()
+  const { invoicesData, error, loading } = useContext(InvoicesContext)
   /* const date = new Date().toISOString().split('T', 1).toString() */
   const date = '2025-04-13'
 
   const invoicesFilteredByDay = [...invoicesData].filter((i) => (i.uploadAt.split('T', 1).toString() === date))
 
   const invoiceDaily = statusByDate(invoicesFilteredByDay)
+
+  /* const invoiceDaily = {pending:1, accepted:2,rejected:10} */
 
   if (loading) return <h1>Loading....</h1>
   if (error) toast.warning('Error retrieving information of daily invoices status, please try again')

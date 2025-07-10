@@ -28,6 +28,5 @@ export function useAuth () {
       return false
     }
   }
-
   return { isAuthenticate, user, updateUser }
 }

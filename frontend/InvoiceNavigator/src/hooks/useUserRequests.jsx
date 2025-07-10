@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 
 export function useUserRequest () {
   const navigate = useNavigate()
-  const { updateUser } = useAuth()
+  const { updateUser, user } = useAuth()
   const API_URL = 'http://localhost:4000/'
 
   const loginREQ = async ({ formData }) => {
@@ -92,6 +92,10 @@ export function useUserRequest () {
 
     toast.success('the session has been successfully closed')
     window.localStorage.removeItem('CurrentUser')
+    const taskList = JSON.parse(window.localStorage.getItem('tasks' + user.user.username))
+    if (taskList.task.length <= 0) {
+      window.localStorage.removeItem('tasks' + user.user.username)
+    }
     navigate('/login')
   }
 
