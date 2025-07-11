@@ -7,5 +7,4 @@ export const statusByDate = (arr = []) => {
     acc[current.status] += 1
     return acc
   }, {})
-
 }

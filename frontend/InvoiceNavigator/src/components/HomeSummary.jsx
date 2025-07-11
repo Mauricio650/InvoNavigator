@@ -2,10 +2,10 @@ import { TaskProgressBar } from './TaskProgressBar'
 import '../assets/styles/animations.css'
 import { StatusMonthly } from './StatusMonthly'
 import { Tasks } from './tasks/Tasks'
-import { useInvoices } from '../hooks/useInvoices'
+import { useFetchInvoices } from '../hooks/useFetchInvoices'
 
 export function HomeSummary () {
-  const { invoicesData } = useInvoices()
+  useFetchInvoices()
   return (
 
     <article className='w-full h-full flex flex-col'>

@@ -93,7 +93,7 @@ export function useUserRequest () {
     toast.success('the session has been successfully closed')
     window.localStorage.removeItem('CurrentUser')
     const taskList = JSON.parse(window.localStorage.getItem('tasks' + user.user.username))
-    if (taskList.task.length <= 0) {
+    if (taskList?.task && taskList.task.length <= 0) {
       window.localStorage.removeItem('tasks' + user.user.username)
     }
     navigate('/login')

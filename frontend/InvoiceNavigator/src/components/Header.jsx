@@ -1,5 +1,5 @@
 import { BiAnalyse, BiExit, BiHome, BiSlider, BiTable } from 'react-icons/bi'
-import { DocumentLogo2 } from './Icons'
+import { DocumentLogo2, InLogo } from './Icons'
 import { SuperLi } from './SuperLi'
 import { useAuth } from '../hooks/useAuth'
 import { useUserRequest } from '../hooks/useUserRequests'
@@ -36,7 +36,11 @@ export function Header () {
             </div>
           </li>
         </ul>
+
       </nav>
+      <div className='h-full flex justify-center items-end'>
+        <InLogo />
+      </div>
     </header>
   )
 }

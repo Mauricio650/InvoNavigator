@@ -40,3 +40,9 @@ export const DocumentLogo2 = () => {
     </svg>
   )
 }
+
+export const InLogo = () => {
+  return (
+    <img className='w-xs' src='/logo.webp' alt='logo of invoice navigator' />
+  )
+}
