@@ -9,7 +9,11 @@ export function useFetchInvoices () {
           credentials: 'include'
         })
         const json = await res.json()
-        updateInvoicesData({ data: json })
+        const data = json.map(i => ({
+          ...i,
+          id: i._id
+        }))
+        updateInvoicesData({ data })
       } catch (err) {
         console.error('Error:', err)
         setError(true)
