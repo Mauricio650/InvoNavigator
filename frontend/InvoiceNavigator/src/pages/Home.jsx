@@ -30,9 +30,3 @@ export function Home () {
     </>
   )
 }
-
-/*
-
-<div className='h-1/6 w-full  bg-sky-100 text-sky-900 backdrop-blur-md p-4 rounded-xl shadow'></div>
-
-*/

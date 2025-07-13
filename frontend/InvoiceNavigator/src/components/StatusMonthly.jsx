@@ -33,7 +33,7 @@ export function StatusMonthly () {
           <div className='  ring-2 ring-sky-50 flex flex-col gap-1 justify-center items-center bg-lime-500/30 text-sky-900 backdrop-blur-lg rounded-xl shadow-lg  p-5 '>
             <BiCheck size={20} />
             <span className='text-xl'>Accepted </span>
-            <p className='text-sky-950 font-bold text-xl'>{statusMonth.accepted}</p>
+            <p className='text-sky-950 font-bold text-xl'>{statusMonth.accepted ? statusMonth.accepted : 0}</p>
           </div>
 
         </article>
@@ -42,7 +42,7 @@ export function StatusMonthly () {
           <div className=' ring-2 ring-sky-50 flex flex-col gap-1 justify-center items-center backdrop-blur-lg rounded-xl shadow-lg bg-yellow-300/30 text-sky-900 p-5'>
             <BiTime size={20} />
             <span className='text-xl'>Pending</span>
-            <p className='text-sky-950 font-bold text-xl'>{statusMonth.pending}</p>
+            <p className='text-sky-950 font-bold text-xl'>{statusMonth.pending ? statusMonth.pending : 0}</p>
           </div>
 
         </article>
@@ -51,7 +51,7 @@ export function StatusMonthly () {
           <div className='  ring-2 ring-sky-50  flex flex-col gap-1 justify-center items-center backdrop-blur-md rounded-xl shadow-lg bg-red-400/30 text-sky-900 p-5'>
             <BiError size={20} />
             <span className='text-xl'>Rejected</span>
-            <p className='text-sky-950 font-bold text-xl'>{statusMonth.rejected}</p>
+            <p className='text-sky-950 font-bold text-xl'>{statusMonth.rejected ? statusMonth.rejected : 0}</p>
           </div>
 
         </article>
