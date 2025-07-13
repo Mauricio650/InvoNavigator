@@ -1,8 +1,8 @@
-import { TaskProgressBar } from './TaskProgressBar'
-import '../assets/styles/animations.css'
+import { TaskProgressBar } from '../tasks/TaskProgressBar'
+import '../../assets/styles/animations.css'
 import { StatusMonthly } from './StatusMonthly'
-import { Tasks } from './tasks/Tasks'
-import { useFetchInvoices } from '../hooks/useFetchInvoices'
+import { Tasks } from '../tasks/Tasks'
+import { useFetchInvoices } from '../../hooks/fetchs/useFetchInvoices'
 
 export function HomeSummary () {
   useFetchInvoices()

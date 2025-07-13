@@ -1,11 +1,11 @@
 import { useContext, useState, useEffect } from 'react'
-import { InvoicesContext } from '../context/invoicesContext'
+import { InvoicesContext } from '../../context/invoicesContext'
 export function useRowsTable () {
   const { invoicesData } = useContext(InvoicesContext)
   const [rows, setRows] = useState([])
 
   useEffect(() => {
-    const reversed = invoicesData.reverse()
+    const reversed = [...invoicesData].reverse()
     setRows(reversed)
   }, [invoicesData])
 

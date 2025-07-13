@@ -1,8 +1,8 @@
 import { BiAnalyse, BiExit, BiHome, BiSlider, BiTable } from 'react-icons/bi'
-import { DocumentLogo2, InLogo } from './Icons'
-import { SuperLi } from './SuperLi'
-import { useAuth } from '../hooks/useAuth'
-import { useUserRequest } from '../hooks/useUserRequests'
+import { DocumentLogo2, InLogo } from '../Icons'
+import { SuperLi } from '../SuperLi'
+import { useAuth } from '../../hooks/auth/useAuth'
+import { useUserRequest } from '../../hooks/invoices/useUserRequests'
 
 export function Header () {
   const { user } = useAuth()

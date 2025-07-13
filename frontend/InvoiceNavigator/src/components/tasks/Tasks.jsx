@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { BiCheckCircle, BiTimeFive, BiTrash, BiCheck, BiTaskX } from 'react-icons/bi'
-import { TasksContext } from '../../context/tasksContext'
-import { useAuth } from '../../hooks/useAuth'
+import { TasksContext } from '../../context/taskManager/tasksContext'
+import { useAuth } from '../../hooks/auth/useAuth'
 
 export function Tasks () {
   const { tasks, deleteTask, changeStatusTask } = useContext(TasksContext)

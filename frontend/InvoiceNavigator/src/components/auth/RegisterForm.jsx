@@ -1,11 +1,11 @@
 import { useId, useState } from 'react'
-import { InLogo } from '../components/Icons'
+import { InLogo } from '../Icons'
 import { NavLink } from 'react-router-dom'
-import { useUserRequest } from '../hooks/useUserRequests'
-import { validateSchemaUser } from '../schemas/user'
-import { ErrorToast } from '../toasts/error'
+import { useUserRequest } from '../../hooks/invoices/useUserRequests'
+import { validateSchemaUser } from '../../schemas/user'
+import { ErrorToast } from '../../toasts/error'
 import { BiShow, BiHide, BiSolidUser, BiSolidLockAlt, BiSolidIdCard } from 'react-icons/bi'
-import { BtnClassic } from './BtnClassic'
+import { BtnClassic } from '../BtnClassic'
 
 export function RegisterForm () {
   const idInputPassword = useId()

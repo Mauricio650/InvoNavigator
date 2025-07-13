@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { InvoicesContext } from '../context/invoicesContext'
+import { InvoicesContext } from '../../context/invoicesContext'
 
 export function useInvoices () {
   const context = useContext(InvoicesContext)

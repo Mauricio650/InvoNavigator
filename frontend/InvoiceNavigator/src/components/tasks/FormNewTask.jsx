@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useTasks } from '../../hooks/taskManager/useTasks'
 import { toast } from 'sonner'
-import { useAuth } from '../../hooks/useAuth'
+import { useAuth } from '../../hooks/auth/useAuth'
 
 export function FormNewTask () {
   const inputRef = useRef(null)

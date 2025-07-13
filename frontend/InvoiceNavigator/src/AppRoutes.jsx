@@ -2,8 +2,8 @@ import { Login } from './pages/Login'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Register } from './pages/Register'
 import { Home } from './pages/Home'
-import { ProtectedRoute } from './components/ProtectedRoute'
-import { HomeSummary } from './components/HomeSummary'
+import { ProtectedRoute } from './components/auth/ProtectedRoute'
+import { HomeSummary } from './components/home/HomeSummary'
 import { TableInvoices } from './pages/TableInvoices'
 
 export function AppRoutes () {

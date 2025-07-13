@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
-import { TasksContext } from '../../context/tasksContext'
-import { useAuth } from '../useAuth'
+import { TasksContext } from '../../context/taskManager/tasksContext'
+import { useAuth } from '../auth/useAuth'
 
 export function useTasks () {
   const context = useContext(TasksContext)

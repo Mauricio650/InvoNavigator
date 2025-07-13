@@ -1,6 +1,6 @@
 import './App.css'
 import { Toaster } from 'sonner'
-import { TaskProvider } from './context/tasksContext.jsx'
+import { TaskProvider } from './context/taskManager/tasksContext'
 import { InvoiceProvider } from './context/invoicesContext'
 import { AppRoutes } from './AppRoutes'
 

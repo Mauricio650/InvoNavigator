@@ -1,10 +1,11 @@
-import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../../hooks/auth/useAuth'
 import { useContext } from 'react'
-import { TasksContext } from '../context/tasksContext'
+import { TasksContext } from '../../context/taskManager/tasksContext'
 
 export function TaskProgressBar () {
   const { tasks } = useContext(TasksContext)
-  const completedTasks = tasks.filter(t => t.status === 'completed')
+
+  const completedTasks = [...tasks].filter(t => t.status === 'completed')
 
   const percentage = tasks.length > 0 ? Math.round((completedTasks.length / tasks.length) * 100) : 0
   const { user } = useAuth()

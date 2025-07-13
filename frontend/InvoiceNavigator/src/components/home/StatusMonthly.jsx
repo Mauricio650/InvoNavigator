@@ -1,8 +1,8 @@
 import { toast } from 'sonner'
 import { BiCheck, BiError, BiTime } from 'react-icons/bi'
-import { InvoicesContext } from '../context/invoicesContext'
+import { InvoicesContext } from '../../context/invoicesContext'
 import { useContext } from 'react'
-import { statusByDate } from '../logic/statusByDate'
+import { statusByDate } from '../../logic/statusByDate'
 
 export function StatusMonthly () {
   const { invoicesData, error, loading } = useContext(InvoicesContext)

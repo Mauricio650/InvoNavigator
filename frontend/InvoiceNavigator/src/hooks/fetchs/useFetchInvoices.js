@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useInvoices } from './useInvoices'
+import { useInvoices } from '../invoices/useInvoices'
 export function useFetchInvoices () {
   const { updateInvoicesData, setLoading, setError } = useInvoices()
   useEffect(() => {

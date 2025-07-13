@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from './useAuth'
-import { ErrorToast } from '../toasts/error'
-import { SuccessToast } from '../toasts/success'
+import { useAuth } from '../auth/useAuth'
+import { ErrorToast } from '../../toasts/error'
+import { SuccessToast } from '../../toasts/success'
 import { toast } from 'sonner'
 
 export function useUserRequest () {
@@ -10,18 +10,6 @@ export function useUserRequest () {
   const API_URL = 'http://localhost:4000/'
 
   const loginREQ = async ({ formData }) => {
-    if (formData?.RememberMe) {
-      window.localStorage.setItem('formData', JSON.stringify(formData))
-    } else {
-      const raw = window.localStorage.getItem('formData')
-      if (raw) {
-        const parse = JSON.parse(raw)
-        if (parse.username === formData.username) {
-          window.localStorage.removeItem('formData')
-        }
-      }
-    }
-
     try {
       const response = await fetch(API_URL + 'login', {
         method: 'POST',
@@ -42,6 +30,18 @@ export function useUserRequest () {
       if (json.ok) {
         updateUser(json.user)
         window.localStorage.setItem('CurrentUser', JSON.stringify(json.user))
+
+        if (formData?.RememberMe) {
+          window.localStorage.setItem('formData', JSON.stringify(formData))
+        } else {
+          const raw = window.localStorage.getItem('formData')
+          if (raw) {
+            const parse = JSON.parse(raw)
+            if (parse.username === formData.username) {
+              window.localStorage.removeItem('formData')
+            }
+          }
+        }
         return navigate('/home')
       }
     } catch (error) {

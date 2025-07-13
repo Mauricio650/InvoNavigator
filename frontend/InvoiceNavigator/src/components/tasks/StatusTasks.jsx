@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { FormNewTask } from './FormNewTask'
-import { TasksContext } from '../../context/tasksContext'
+import { TasksContext } from '../../context/taskManager/tasksContext'
 
 export function StatusTasks () {
   const { tasks } = useContext(TasksContext)

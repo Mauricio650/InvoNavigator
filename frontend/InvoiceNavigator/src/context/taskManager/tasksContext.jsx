@@ -1,5 +1,5 @@
 import { useReducer, createContext } from 'react'
-import { reducer, initialState } from './reducers/taskReducer'
+import { reducer, initialState } from '../reducers/taskReducer'
 
 export const TasksContext = createContext()
 

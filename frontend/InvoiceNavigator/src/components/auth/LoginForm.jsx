@@ -1,12 +1,12 @@
 import { useId, useState } from 'react'
-import { InLogo } from './Icons'
+import { InLogo } from '../Icons'
 import { NavLink } from 'react-router-dom'
-import { useUserRequest } from '../hooks/useUserRequests'
-import { validatePartialUser } from '../schemas/user'
-import { ErrorToast } from '../toasts/error'
+import { useUserRequest } from '../../hooks/invoices/useUserRequests'
+import { validatePartialUser } from '../../schemas/user'
+import { ErrorToast } from '../../toasts/error'
 import { BiShow, BiHide, BiSolidUser, BiSolidLockAlt } from 'react-icons/bi'
-import { useRememberMe } from '../hooks/useRememberMe'
-import { BtnClassic } from './BtnClassic'
+import { useRememberMe } from '../../hooks/auth/useRememberMe'
+import { BtnClassic } from '../BtnClassic'
 
 export function LoginForm () {
   const idInputPassword = useId()

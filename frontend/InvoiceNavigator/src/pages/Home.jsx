@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import { Header } from '../components/Header'
-import { StatusDaily } from '../components/StatusDaily'
+import { Header } from '../components/home/Header'
+import { StatusDaily } from '../components/home/StatusDaily'
 import { StatusTasks } from '../components/tasks/StatusTasks'
 
 export function Home () {
