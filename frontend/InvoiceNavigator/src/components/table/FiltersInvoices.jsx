@@ -8,7 +8,7 @@ export function FiltersInvoices () {
   const idInputDateFrom = useId()
   const idInputDateTo = useId()
 
-  const handledSubmit = (e) => {
+  const handledSubmit = async (e) => {
     e.preventDefault()
     const formData = Object.fromEntries(new FormData(e.target))
     const filteredData = Object.entries(formData).reduce((acc, cv) => {
@@ -19,7 +19,20 @@ export function FiltersInvoices () {
       return acc
     }, {})
 
-    console.log(filteredData)
+    try {
+      const res = await fetch('http://localhost:4000/home/filterInvoices', {
+        credentials: 'include',
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(filteredData)
+      })
+      const response = await res.json()
+      console.log(response)
+    } catch (error) {
+      console.error('Internal server error', error)
+    }
   }
 
   return (
@@ -67,11 +80,6 @@ export function FiltersInvoices () {
             <input type='date' name='to' id={idInputDateTo} className='max-w-sm p-1 bg-gray-100 ring-2 ring-gray-500 rounded-xl focus:outline-blue-800 focus:bg-gray-400 focus:text-white' placeholder='Tesla enterprise' />
           </div>
         </div>
-
-      
-      
-
-        
 
         <aside>
           <BtnClassic>
