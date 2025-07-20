@@ -6,8 +6,7 @@ import { InvoicesContext } from '../../context/invoicesContext'
 
 export function StatusDaily () {
   const { invoicesData, error, loading } = useContext(InvoicesContext)
-  /* const date = new Date().toISOString().split('T', 1).toString() */
-  const date = '2025-07-11'
+  const date = new Date().toISOString().split('T', 1).toString()
 
   const invoicesFilteredByDay = [...invoicesData].filter((i) => (i.uploadAt.split('T', 1).toString() === date))
 

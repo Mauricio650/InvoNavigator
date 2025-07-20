@@ -1,9 +1,8 @@
-import { useId } from 'react'
+import { useId, useRef } from 'react'
 import { BtnClassic } from '../BtnClassic'
 import { useInvoices } from '../../hooks/invoices/useInvoices'
 import { BiReset } from 'react-icons/bi'
 import { useFetchInvoices } from '../../hooks/fetchs/useFetchInvoices'
-import { useRef } from 'react'
 
 export function FiltersInvoices () {
   const idInputCompany = useId()

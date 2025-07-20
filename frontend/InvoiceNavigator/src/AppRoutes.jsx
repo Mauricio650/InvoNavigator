@@ -5,11 +5,13 @@ import { Home } from './pages/Home'
 import { ProtectedRoute } from './components/auth/ProtectedRoute'
 import { HomeSummary } from './components/home/HomeSummary'
 import { TableInvoices } from './pages/TableInvoices'
+import { PruebaPage } from './pages/pruebas'
 
 export function AppRoutes () {
   return (
     <Routes>
       <Route path='/' element={<Navigate to='/login' />} />
+      <Route path='/pruebapage' element={<PruebaPage />} />
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>}>
