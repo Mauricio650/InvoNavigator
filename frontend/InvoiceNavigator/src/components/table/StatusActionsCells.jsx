@@ -1,24 +1,39 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { MenuItem, IconButton, Menu } from '@mui/material'
-import { BiDotsVerticalRounded, BiSolidFilePdf, BiCheck, BiX, BiMessageAdd, BiSave, BiXCircle } from 'react-icons/bi'
-import { toast } from 'sonner'
-
-import { BtnClassic } from '../BtnClassic'
+import { BiDotsVerticalRounded, BiSolidFilePdf, BiCheck, BiX, BiMessageAdd } from 'react-icons/bi'
+import { ModalMessage } from './ModalMessage'
+import { validatePartialInvoice, schemaInvoice } from '../../schemas/invoices'
+import { ErrorToast } from '../../toasts/error'
+import { SuccessToast } from '../../toasts/success'
 
 export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowStatus }) {
   const [anchorEl, setAnchorEl] = useState(null)
+  const [showModal, setShowModal] = useState(null)
   const open = Boolean(anchorEl)
-  const modalREF = useRef(null)
 
   const handleCloseModal = (e) => {
     e.preventDefault()
-    modalREF.current.close()
+    setShowModal(false)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const data = Object.fromEntries(new FormData(e.target))
-    console.log(data)
+    const result = validatePartialInvoice(data, schemaInvoice)
+    if (!result) return ErrorToast({ path: 'Modal Message', description: 'Invalid characters, please try again' })
+
+    const res = await fetch(`http://localhost:4000/home/updateMessage/${id}`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(result.data)
+    })
+
+    const response = await res.json()
+    if (response.status) return SuccessToast({ title: 'Successfully', description: response.message })
+    ErrorToast({ path: 'Notes', description: response })
   }
 
   const handleClick = (event) => {
@@ -30,7 +45,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
   }
 
   const handleAccept = async () => {
-    if (rowStatus !== 'pending') return toast.warning('The invoice is already ' + rowStatus)
+    if (rowStatus !== 'pending') return ErrorToast({ path: 'Table', description: `The invoice is already ${rowStatus}` })
     try {
       const res = await fetch(`http://localhost:4000/home/updateStatus/${id}`, {
         method: 'PATCH',
@@ -44,17 +59,17 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
       const response = await res.json()
       if (response.status) {
         onStatusChange({ id, newStatus: 'accepted' })
-        return toast.success('invoice has been accepted')
+        return SuccessToast({ title: 'Successfully', description: 'invoice has been accepted' })
       }
     } catch (error) {
-      toast.warning('error, please try again')
+      ErrorToast({ path: 'Table', description: 'error, please try again' })
       console.error('Error accepting invoice:', error)
     }
     handleClose()
   }
 
   const handleReject = async () => {
-    if (rowStatus !== 'pending') return toast.warning('The invoice is already ' + rowStatus)
+    if (rowStatus !== 'pending') return ErrorToast({ path: 'Table', description: `The invoice is already ${rowStatus}` })
     try {
       const res = await fetch(`http://localhost:4000/home/updateStatus/${id}`, {
         method: 'PATCH',
@@ -68,10 +83,10 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
       const response = await res.json()
       if (response.status) {
         onStatusChange({ id, newStatus: 'rejected' })
-        return toast.success('invoice has been rejected')
+        return SuccessToast({ title: 'Successfully', description: 'invoice has been rejected' })
       }
     } catch (error) {
-      toast.warning('error, please try again')
+      ErrorToast({ path: 'Table', description: 'error, please try again' })
       console.error('Error rejecting invoice:', error)
     }
     handleClose()
@@ -84,7 +99,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
       })
 
       if (!response.ok) {
-        toast.warning('error downloading invoice' + number + ' please,try again!')
+        ErrorToast({ path: 'table', description: `error downloading invoice ${number} please,try again` })
         throw new Error('error downloading invoice')
       }
 
@@ -98,7 +113,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
       a.click()
       a.remove()
       window.URL.revokeObjectURL(url)
-      toast.success('invoice ' + number + ' downloaded')
+      SuccessToast({ title: 'Successfully', description: `Invoice ${number} downloaded` })
     } catch (error) {
       console.error('error:', error)
     }
@@ -106,21 +121,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
 
   return (
     <>
-      <dialog className='w-md h-lg p-4 m-auto shadow-lg rounded' ref={modalREF} id='ModalNote'>
-        <form className='flex flex-col justify-center items-center gap-2' onSubmit={handleSubmit}>
-          <input
-            type='text'
-            name='message'
-            placeholder='Escribe una nota...'
-            required
-            className='w-full placeholder:italic placeholder:text-gray-400 ring-1'
-          />
-          <aside className='flex gap-2 justify-center items-center'>
-            <BtnClassic><BiSave size={23} /></BtnClassic>
-            <BtnClassic onClick={handleCloseModal}><BiXCircle size={23} /></BtnClassic>
-          </aside>
-        </form>
-      </dialog>
+      {showModal && <ModalMessage handleSubmit={handleSubmit} handleCloseModal={handleCloseModal} />}
 
       <div>
         <IconButton onClick={handleClick}>
@@ -134,7 +135,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
           <MenuItem onClick={handleAccept}>Accept  <BiCheck size={22} /></MenuItem>
           <MenuItem onClick={handleReject}>Reject <BiX size={22} /></MenuItem>
           <MenuItem onClick={handleDownLoad}>Download  <BiSolidFilePdf size={22} /> </MenuItem>
-          <MenuItem onClick={() => modalREF.current.showModal()}>Note  <BiMessageAdd size={22} /> </MenuItem>
+          <MenuItem onClick={() => setShowModal(true)}>Note  <BiMessageAdd size={22} /> </MenuItem>
         </Menu>
       </div>
     </>
