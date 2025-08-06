@@ -6,6 +6,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute'
 import { HomeSummary } from './components/home/HomeSummary'
 import { TableInvoices } from './pages/TableInvoices'
 import { PruebaPage } from './pages/pruebas'
+import { ProtectedRouteAdmin } from './components/auth/AdminRoute'
 
 export function AppRoutes () {
   return (
@@ -17,8 +18,7 @@ export function AppRoutes () {
       <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>}>
         <Route index element={<HomeSummary />} />
         <Route path='settings' element={<ProtectedRoute><h1>Page Settings</h1></ProtectedRoute>} />
-        <Route path='analytics' element={<ProtectedRoute><h1>OJO COLOCAR PORTECTED ROUTED A ESTA RUTA</h1></ProtectedRoute>} />
-        {/* PROTECTED ROUTE A LA DE ADMIN, PLEASEEEEEE */}
+        <Route path='analytics' element={<ProtectedRouteAdmin><h1>HOLA</h1></ProtectedRouteAdmin>} />
         <Route path='invoices' element={<ProtectedRoute><TableInvoices /></ProtectedRoute>} />
       </Route>
     </Routes>
