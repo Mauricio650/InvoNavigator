@@ -15,7 +15,7 @@ export function Analytics () {
             <DoughnutChart />
           </section>
           <section className='w-1/2 flex items-center justify-center'>
-            <DoughnutChartNotes></DoughnutChartNotes>
+            <DoughnutChartNotes />
           </section>
         </div>
 
