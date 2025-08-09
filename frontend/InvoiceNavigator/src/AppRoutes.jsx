@@ -7,6 +7,7 @@ import { HomeSummary } from './components/home/HomeSummary'
 import { TableInvoices } from './pages/TableInvoices'
 import { PruebaPage } from './pages/pruebas'
 import { ProtectedRouteAdmin } from './components/auth/AdminRoute'
+import { Analytics } from './pages/Analytics'
 
 export function AppRoutes () {
   return (
@@ -18,7 +19,7 @@ export function AppRoutes () {
       <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>}>
         <Route index element={<HomeSummary />} />
         <Route path='settings' element={<ProtectedRoute><h1>Page Settings</h1></ProtectedRoute>} />
-        <Route path='analytics' element={<ProtectedRouteAdmin><h1>HOLA</h1></ProtectedRouteAdmin>} />
+        <Route path='analytics' element={<ProtectedRouteAdmin><Analytics /></ProtectedRouteAdmin>} />
         <Route path='invoices' element={<ProtectedRoute><TableInvoices /></ProtectedRoute>} />
       </Route>
     </Routes>
