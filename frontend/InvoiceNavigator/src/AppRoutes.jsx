@@ -9,6 +9,7 @@ import { PruebaPage } from './pages/pruebas'
 import { ProtectedRouteAdmin } from './components/auth/AdminRoute'
 import { Analytics } from './pages/Analytics'
 import { Settings } from './pages/Settings.jsx'
+import { ChangePassword } from './components/settings/ChangePassword.jsx'
 
 export function AppRoutes () {
   return (
@@ -21,7 +22,7 @@ export function AppRoutes () {
         <Route index element={<HomeSummary />} />
 
         <Route path='settings' element={<ProtectedRoute><Settings /></ProtectedRoute>}>
-          <Route path='changePassword' element={<h1>Page Settings</h1>} />
+          <Route path='changePassword' element={<ChangePassword />} />
         </Route>
 
         <Route path='analytics' element={<ProtectedRouteAdmin><Analytics /></ProtectedRouteAdmin>} />
