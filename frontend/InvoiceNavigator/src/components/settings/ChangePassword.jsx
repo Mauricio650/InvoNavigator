@@ -1,6 +1,9 @@
 import { useState, useId } from 'react'
 import { BtnClassic } from '../BtnClassic'
 import { BiHide, BiShow, BiSolidLockAlt } from 'react-icons/bi'
+import { validatePartialUser } from '../../schemas/user'
+import { ErrorToast } from '../../toasts/error'
+import { SuccessToast } from '../../toasts/success'
 
 export function ChangePassword () {
   const idInputPasswordOLD = useId()
@@ -10,9 +13,7 @@ export function ChangePassword () {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = Object.fromEntries(new FormData(e.target))
-    console.log(formData)
-    /* const result = validateSchemaUser(formData)
-
+    const result = validatePartialUser({ password: formData.passwordNEW })
     if (!result.success) {
       const errors = { error: true }
       result.error.issues.forEach(e => {
@@ -23,7 +24,21 @@ export function ChangePassword () {
       return ErrorToast({ path: errors.path, description: errors.message })
     }
 
-    registerREQ({ formData }) */
+    try {
+      const res = await fetch('http://localhost:4000/changePassword', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(formData)
+      })
+      const response = await res.json()
+      if (response.error) return ErrorToast({ path: 'Password', description: response.error })
+      if (response.successfully) return SuccessToast({ title: 'Password', description: 'The password was updated' })
+    } catch (error) {
+      ErrorToast({ path: 'Unknown', description: 'wait a minute and try again' })
+    }
   }
 
   return (
