@@ -36,7 +36,7 @@ export function ChangePassword () {
       const response = await res.json()
       if (response.error) return ErrorToast({ path: 'Password', description: response.error })
       if (response.successfully) return SuccessToast({ title: 'Password', description: 'The password was updated' })
-    } catch (error) {
+    } catch (e) {
       ErrorToast({ path: 'Unknown', description: 'wait a minute and try again' })
     }
   }
@@ -45,7 +45,7 @@ export function ChangePassword () {
     <article className='w-full h-1/2 flex flex-col justify-center items-center gap-3'>
       <form className='bg-sky-900 text-sky-100 flex flex-col justify-center items-center gap-6 p-10 rounded shadow-lg' onSubmit={handleSubmit}>
 
-        <label className='sr-only' htmlFor={idInputPasswordOLD}>Password</label>
+        <label className='sr-only' htmlFor={idInputPasswordOLD}>Current Password</label>
         <div className='relative w-full flex justify-center'>
           <BiSolidLockAlt className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
           <input
@@ -66,7 +66,7 @@ export function ChangePassword () {
           </button>
         </div>
 
-        <label className='sr-only' htmlFor={idInputPasswordNEW}>Password</label>
+        <label className='sr-only' htmlFor={idInputPasswordNEW}>New Password</label>
         <div className='relative w-full flex justify-center'>
           <BiSolidLockAlt className='absolute left-2 top-1/2 -translate-y-1/2 text-sky-300 hover:text-sky-100' />
           <input

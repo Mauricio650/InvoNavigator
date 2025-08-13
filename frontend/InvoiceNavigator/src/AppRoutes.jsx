@@ -10,12 +10,21 @@ import { ProtectedRouteAdmin } from './components/auth/AdminRoute'
 import { Analytics } from './pages/Analytics'
 import { Settings } from './pages/Settings.jsx'
 import { ChangePassword } from './components/settings/ChangePassword.jsx'
+import { AdminPage } from './pages/AdminPage.jsx'
+import { DeleteForm } from './components/admin/DeleteForm.jsx'
+import { UpdateForm } from './components/admin/UpdateForm.jsx'
+import { UploadForm } from './components/admin/UploadForm.jsx'
 
 export function AppRoutes () {
   return (
     <Routes>
       <Route path='/' element={<Navigate to='/login' />} />
-      <Route path='/pruebapage' element={<PruebaPage />} />
+      <Route path='/pruebapage' element={<ProtectedRouteAdmin><PruebaPage /></ProtectedRouteAdmin>} />
+      <Route path='/adminPage' element={<ProtectedRouteAdmin><AdminPage /></ProtectedRouteAdmin>}>
+        <Route path='deleteInvoice' element={<DeleteForm />} />
+        <Route path='updateInvoice' element={<UpdateForm />} />
+        <Route path='uploadInvoice' element={<UploadForm />} />
+      </Route>
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>}>
@@ -27,6 +36,12 @@ export function AppRoutes () {
 
         <Route path='analytics' element={<ProtectedRouteAdmin><Analytics /></ProtectedRouteAdmin>} />
         <Route path='invoices' element={<ProtectedRoute><TableInvoices /></ProtectedRoute>} />
+
+        <Route path='adminPage' element={<ProtectedRouteAdmin><AdminPage /></ProtectedRouteAdmin>}>
+          <Route path='deleteInvoice' element={<DeleteForm />} />
+          <Route path='updateInvoice' element={<UpdateForm />} />
+          <Route path='uploadInvoice' element={<UploadForm />} />
+        </Route>
       </Route>
     </Routes>
   )
