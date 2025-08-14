@@ -91,7 +91,7 @@ export function FiltersInvoices () {
             <label htmlFor={idInputDateTo} className='block'>
               To
             </label>
-            <input type='date' name='to' id={idInputDateTo} className='max-w-sm p-1 bg-gray-100 ring-2 ring-gray-500 rounded-xl focus:outline-blue-800 focus:bg-gray-400 focus:text-white' placeholder='Tesla enterprise' />
+            <input type='date' name='toD' id={idInputDateTo} className='max-w-sm p-1 bg-gray-100 ring-2 ring-gray-500 rounded-xl focus:outline-blue-800 focus:bg-gray-400 focus:text-white' placeholder='Tesla enterprise' />
           </div>
         </div>
 
