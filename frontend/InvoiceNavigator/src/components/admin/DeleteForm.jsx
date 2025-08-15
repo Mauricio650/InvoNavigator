@@ -10,7 +10,6 @@ export function DeleteForm () {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = Object.fromEntries(new FormData(e.target))
-    console.log(formData.id)
     try {
       const res = await fetch(`http://localhost:4000/home/invoices/delete/${formData.id}`, {
         method: 'DELETE',

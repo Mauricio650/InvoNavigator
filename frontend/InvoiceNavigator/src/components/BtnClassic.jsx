@@ -3,8 +3,8 @@ export function BtnClassic ({ children, onClick, ref }) {
     <button
       onClick={onClick}
       ref={ref}
-      className='font-medium text-white cursor-pointer
-     bg-sky-600 rounded-sm px-2 ring-2 ring-sky-50 border-b-4 border-l-3 border-r-2 border-t-2 border-transparent
+      className='2xl:font-medium text-md text-white cursor-pointer
+     bg-sky-600 rounded-sm 2xl:px-2 ring-1 2xl:ring-2 ring-sky-50 border-b-4 border-l-3 border-r-2 border-t-2 border-transparent
     hover:bg-sky-700 hover:border-sky-950 shadow-lg shadow-sky-500/50 hover:shadow-sky-50 transition-all ease-linear duration-200
     '
     >

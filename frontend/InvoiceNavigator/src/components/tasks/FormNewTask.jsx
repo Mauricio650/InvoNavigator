@@ -17,22 +17,22 @@ export function FormNewTask () {
   }
 
   return (
-    <article className='w-full  text-sky-900 backdrop-blur-md px-6 py-4 mt-4  rounded-xl shadow p-6 max-w-xl mx-auto'>
-      <h2 className='text-center text-xl font-semibold text-gray-800 mb-4'>
+    <article className='w-full  text-sky-900 backdrop-blur-md 2xl:px-6 2xl:py-4 2xl:mt-4  rounded-xl shadow 2xl:p-6 max-w-xl mx-auto'>
+      <h2 className='text-center text-xs 2xl:text-xl font-semibold text-gray-800 2xl:mb-4'>
         Add New Task
       </h2>
-      <form onSubmit={handleSubmit} className='flex flex-col items-center gap-4'>
+      <form onSubmit={handleSubmit} className='flex p-1 flex-col items-center gap-1 2xl:gap-4'>
         <input
           ref={inputRef}
           type='text'
           name='task'
           placeholder='Enter your task...'
-          className='flex-1 w-full px-4 py-3 rounded-lg shadow-md bg-white/80 placeholder-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          className='flex-1 w-full 2xl:px-4 2xl:py-3 text-xs 2xl:text-lg rounded-lg shadow-md bg-white/80 placeholder-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400'
           required
         />
         <button
           type='submit'
-          className='bg-blue-600 cursor-pointer text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-200'
+          className='bg-blue-600 text-xs p-1 2xl:text-lg cursor-pointer text-white 2xl:px-6 2xl:py-3 rounded-lg shadow hover:bg-blue-700 transition duration-200'
         >
           Add Task
         </button>

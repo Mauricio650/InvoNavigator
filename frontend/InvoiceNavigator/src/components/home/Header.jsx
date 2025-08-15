@@ -9,17 +9,17 @@ export function Header () {
   const { logOutREQ } = useUserRequest()
 
   return (
-    <header className='flex flex-col gap-12 w-xs h-full bg-sky-950 text-white font- shadow-lg'>
+    <header className='flex flex-col gap-12 w-full h-full bg-sky-950 text-white font- shadow-lg'>
       <div className='flex items-center'>
         <DocumentLogo2 />
         <div>
-          <h1 className=' text-sky-50 text-2xl'>{user.user.username}</h1>
-          <span className='font-bold text-sky-500 text-ms'>{user.user.fullName}</span>
+          <h1 className=' text-sky-50 text-xs 2xl:text-2xl'>{user.user.username}</h1>
+          <span className='font-bold text-xs 2xl:text-ms text-sky-500'>{user.user.fullName}</span>
         </div>
       </div>
-      <nav className=' flex flex-col'>
-        <h3 className='font-bold text-sky-500 text-lg ml-10 mb-10'> Menu </h3>
-        <ul className='flex flex-col justify-center gap-4'>
+      <nav className='flex flex-col'>
+        <h3 className='font-bold text-sky-500 text-xs 2xl:text-lg ml-10 mb-10'> Menu </h3>
+        <ul className='flex flex-col justify-center gap-1 2xl:gap-4 '>
           <SuperLi path='/home' text='Home' icon={BiHome} />
           <SuperLi path='invoices' text='Invoices' icon={BiTable} />
           <SuperLi path='analytics' text='Analytics' icon={BiAnalyse} />
@@ -38,7 +38,7 @@ export function Header () {
         </ul>
 
       </nav>
-      <div className='h-full flex justify-center items-end'>
+      <div className='h-full 2xl:flex justify-center items-end hidden'>
         <InLogo />
       </div>
     </header>
