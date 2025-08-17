@@ -21,13 +21,14 @@ export function UpdateForm () {
   const documentID = useRef()
   const formCheckREF = useRef(null)
   const formUpdateREF = useRef(null)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleSubmitSearchId = async (e) => {
     e.preventDefault()
     const formData = Object.fromEntries(new FormData(e.target))
 
     try {
-      const res = await fetch('http://localhost:4000/validateId', {
+      const res = await fetch(`${API_URL}/validateId`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -55,7 +56,7 @@ export function UpdateForm () {
     const formData = new FormData(e.target)
 
     try {
-      const res = await fetch(`http://localhost:4000/home/invoices/update/${documentID.current}`, {
+      const res = await fetch(`${API_URL}/home/invoices/update/${documentID.current}`, {
         method: 'PATCH',
         credentials: 'include',
         body: formData

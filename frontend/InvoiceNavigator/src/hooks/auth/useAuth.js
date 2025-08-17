@@ -3,6 +3,7 @@ import { AuthContext } from '../../context/authContext'
 
 export function useAuth () {
   const { user, updateUser } = useContext(AuthContext)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const isAuthenticate = async () => {
     const raw = window.localStorage.getItem('CurrentUser')
@@ -12,7 +13,7 @@ export function useAuth () {
       return false
     }
 
-    const res = await fetch('http://localhost:4000/verifyToken', {
+    const res = await fetch(`${API_URL}/verifyToken`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

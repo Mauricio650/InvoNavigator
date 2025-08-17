@@ -6,12 +6,13 @@ import { SuccessToast } from '../../toasts/success'
 export function DeleteForm () {
   const idDID = useId()
   const formDeleteREF = useRef(null)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = Object.fromEntries(new FormData(e.target))
     try {
-      const res = await fetch(`http://localhost:4000/home/invoices/delete/${formData.id}`, {
+      const res = await fetch(`${API_URL}/home/invoices/delete/${formData.id}`, {
         method: 'DELETE',
         credentials: 'include'
       })

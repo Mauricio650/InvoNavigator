@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useInvoices } from '../invoices/useInvoices'
 export function useFetchInvoices () {
   const { updateInvoicesData, setLoading, setError } = useInvoices()
+  const API_URL = import.meta.env.VITE_API_URL
 
   const fetchData = async () => {
     try {
-      const res = await fetch('http://localhost:4000/home/invoices', {
+      const res = await fetch(`${API_URL}/invoices`, {
         credentials: 'include'
       })
       const json = await res.json()

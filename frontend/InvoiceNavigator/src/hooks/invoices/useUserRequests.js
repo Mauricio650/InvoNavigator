@@ -7,11 +7,11 @@ import { toast } from 'sonner'
 export function useUserRequest () {
   const navigate = useNavigate()
   const { updateUser, user } = useAuth()
-  const API_URL = 'http://localhost:4000/'
+  const API_URL = import.meta.env.VITE_API_URL
 
   const loginREQ = async ({ formData }) => {
     try {
-      const response = await fetch(API_URL + 'login', {
+      const response = await fetch(API_URL + '/login', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -52,7 +52,7 @@ export function useUserRequest () {
 
   const registerREQ = async ({ formData }) => {
     try {
-      const response = await fetch(API_URL + 'register', {
+      const response = await fetch(API_URL + '/register', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -78,7 +78,7 @@ export function useUserRequest () {
   }
 
   const logOutREQ = async () => {
-    const res = await fetch(API_URL + 'logout', {
+    const res = await fetch(API_URL + '/logout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

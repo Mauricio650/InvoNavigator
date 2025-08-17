@@ -10,6 +10,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
   const [anchorEl, setAnchorEl] = useState(null)
   const [showModal, setShowModal] = useState(null)
   const open = Boolean(anchorEl)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleCloseModal = (e) => {
     e.preventDefault()
@@ -22,7 +23,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
     const result = validatePartialInvoice(data, schemaInvoice)
     if (!result) return ErrorToast({ path: 'Modal Message', description: 'Invalid characters, please try again' })
 
-    const res = await fetch(`http://localhost:4000/home/updateMessage/${id}`, {
+    const res = await fetch(`${API_URL}/home/updateMessage/${id}`, {
       method: 'PATCH',
       credentials: 'include',
       headers: {
@@ -47,7 +48,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
   const handleAccept = async () => {
     if (rowStatus !== 'pending') return ErrorToast({ path: 'Table', description: `The invoice is already ${rowStatus}` })
     try {
-      const res = await fetch(`http://localhost:4000/home/updateStatus/${id}`, {
+      const res = await fetch(`${API_URL}/home/updateStatus/${id}`, {
         method: 'PATCH',
         credentials: 'include',
         headers: {
@@ -71,7 +72,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
   const handleReject = async () => {
     if (rowStatus !== 'pending') return ErrorToast({ path: 'Table', description: `The invoice is already ${rowStatus}` })
     try {
-      const res = await fetch(`http://localhost:4000/home/updateStatus/${id}`, {
+      const res = await fetch(`${API_URL}/home/updateStatus/${id}`, {
         method: 'PATCH',
         credentials: 'include',
         headers: {
@@ -94,7 +95,7 @@ export function StatusActionsCells ({ id, number, onStatusChange, fileId, rowSta
 
   const handleDownLoad = async () => {
     try {
-      const response = await fetch('http://localhost:4000/home/download/' + fileId, {
+      const response = await fetch(`${API_URL}/home/download/` + fileId, {
         credentials: 'include'
       })
 

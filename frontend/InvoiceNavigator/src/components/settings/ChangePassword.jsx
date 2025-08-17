@@ -9,6 +9,7 @@ export function ChangePassword () {
   const idInputPasswordOLD = useId()
   const idInputPasswordNEW = useId()
   const [showPassword, setShowPassword] = useState(false)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -25,7 +26,7 @@ export function ChangePassword () {
     }
 
     try {
-      const res = await fetch('http://localhost:4000/changePassword', {
+      const res = await fetch(`${API_URL}/changePassword`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

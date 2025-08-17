@@ -13,6 +13,7 @@ export function FiltersInvoices () {
   const formRef = useRef(null)
   const { updateInvoicesData } = useInvoices()
   const { fetchData } = useFetchInvoices()
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handledSubmit = async (e) => {
     e.preventDefault()
@@ -25,7 +26,7 @@ export function FiltersInvoices () {
       return acc
     }, {})
     try {
-      const res = await fetch('http://localhost:4000/home/filterInvoices', {
+      const res = await fetch(`${API_URL}/home/filterInvoices`, {
         credentials: 'include',
         method: 'POST',
         headers: {

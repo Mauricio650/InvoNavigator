@@ -2,7 +2,6 @@ import { useId, useRef } from 'react'
 import { BtnClassic } from '../BtnClassic'
 import { ErrorToast } from '../../toasts/error'
 import { SuccessToast } from '../../toasts/success'
-import { validateInvoice, schemaInvoice } from '../../schemas/invoices'
 
 export function UploadForm () {
   const companyID = useId()
@@ -10,12 +9,13 @@ export function UploadForm () {
   const pdfID = useId()
   const toID = useId()
   const formREF = useRef(null)
+  const API_URL = import.meta.env.VITE_API_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
     try {
-      const res = await fetch('http://localhost:4000/upload', {
+      const res = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         credentials: 'include',
         body: formData
