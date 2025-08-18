@@ -6,7 +6,7 @@ export function useFetchInvoices () {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${API_URL}/invoices`, {
+      const res = await fetch(`${API_URL}/home/invoices`, {
         credentials: 'include'
       })
       const json = await res.json()
