@@ -6,9 +6,9 @@ import { StatusTasks } from '../components/tasks/StatusTasks'
 export function Home () {
   return (
     <>
-      <article className='flex justify-between w-screen h-screen bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500 font-mono'>
+      <article className='flex justify-between min-w-screen min-h-screen bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500 font-mono'>
 
-        <section className='w-xs  shadow-xl backdrop-blur-md   shadow-sky-950'>
+        <section className='shadow-xl backdrop-blur-md   shadow-sky-950'>
           <Header />
         </section>
 

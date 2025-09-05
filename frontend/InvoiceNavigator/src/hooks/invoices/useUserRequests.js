@@ -8,10 +8,11 @@ export function useUserRequest () {
   const navigate = useNavigate()
   const { updateUser, user } = useAuth()
   const API_URL = import.meta.env.VITE_API_URL
+  const VITE_API_LOCAL = import.meta.env.VITE_API_LOCAL
 
   const loginREQ = async ({ formData }) => {
     try {
-      const response = await fetch(API_URL + '/login', {
+      const response = await fetch(VITE_API_LOCAL + '/login', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -52,7 +53,7 @@ export function useUserRequest () {
 
   const registerREQ = async ({ formData }) => {
     try {
-      const response = await fetch(API_URL + '/register', {
+      const response = await fetch(VITE_API_LOCAL + '/register', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -78,7 +79,7 @@ export function useUserRequest () {
   }
 
   const logOutREQ = async () => {
-    const res = await fetch(API_URL + '/logout', {
+    const res = await fetch(VITE_API_LOCAL + '/logout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
