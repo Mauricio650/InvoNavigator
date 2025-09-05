@@ -12,7 +12,7 @@ export function useUserRequest () {
 
   const loginREQ = async ({ formData }) => {
     try {
-      const response = await fetch(VITE_API_LOCAL + '/login', {
+      const response = await fetch(API_URL + '/login', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -53,7 +53,7 @@ export function useUserRequest () {
 
   const registerREQ = async ({ formData }) => {
     try {
-      const response = await fetch(VITE_API_LOCAL + '/register', {
+      const response = await fetch(API_URL + '/register', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -79,7 +79,7 @@ export function useUserRequest () {
   }
 
   const logOutREQ = async () => {
-    const res = await fetch(VITE_API_LOCAL + '/logout', {
+    const res = await fetch(API_URL + '/logout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
