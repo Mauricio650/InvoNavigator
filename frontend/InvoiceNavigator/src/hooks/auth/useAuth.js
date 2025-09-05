@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/authContext'
 export function useAuth () {
   const { user, updateUser } = useContext(AuthContext)
   const API_URL = import.meta.env.VITE_API_URL
+  const VITE_API_LOCAL = import.meta.env.VITE_API_LOCAL
 
   const isAuthenticate = async () => {
     const raw = window.localStorage.getItem('CurrentUser')

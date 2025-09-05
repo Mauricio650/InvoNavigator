@@ -31,7 +31,7 @@ export function StatusDaily () {
           <p className='2xl:text-2xl font-bold text-green-600'>{invoiceDaily.accepted ? invoiceDaily.accepted : 0}</p>
         </div>
         <div className='w-px bg-gray-300 2xl:h-10 2xl:mx-3' />
-        <div >
+        <div>
           <p className='text-xs 2xl:text-xl text-gray-600 flex items-center justify-center 2xl:gap-1'>
             <BiTime size={15} />
             <span>Pending</span>
@@ -39,7 +39,7 @@ export function StatusDaily () {
           <p className='2xl:text-2xl font-bold text-yellow-500'>{invoiceDaily.pending ? invoiceDaily.pending : 0}</p>
         </div>
         <div className='w-px bg-gray-300 2xl:h-10 2xl:mx-3' />
-        <div >
+        <div>
           <p className='text-xs 2xl:text-xl text-gray-600 flex items-center justify-center 2xl:gap-1'>
             <BiError size={15} />
             <span>Rejected</span>

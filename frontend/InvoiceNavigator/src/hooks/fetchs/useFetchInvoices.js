@@ -3,6 +3,7 @@ import { useInvoices } from '../invoices/useInvoices'
 export function useFetchInvoices () {
   const { updateInvoicesData, setLoading, setError } = useInvoices()
   const API_URL = import.meta.env.VITE_API_URL
+  const VITE_API_LOCAL = import.meta.env.VITE_API_LOCAL
 
   const fetchData = async () => {
     try {

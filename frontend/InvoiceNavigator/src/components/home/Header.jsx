@@ -8,8 +8,8 @@ export function Header () {
 
   return (
     <header className='flex flex-col gap-12 w-full h-full bg-sky-950 text-white font- shadow-lg'>
-        <DocumentLogo2 />
-        
+      <DocumentLogo2 />
+
       <nav className='flex flex-col'>
         <ul className='flex flex-col justify-center gap-1 2xl:gap-4 '>
           <SuperLi path='/home' text='' icon={BiHome} />

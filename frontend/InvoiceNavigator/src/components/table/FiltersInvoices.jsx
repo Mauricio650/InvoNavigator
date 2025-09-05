@@ -1,8 +1,9 @@
 import { useId, useRef } from 'react'
 import { BtnClassic } from '../BtnClassic'
-import { useInvoices } from '../../hooks/invoices/useInvoices'
 import { BiReset } from 'react-icons/bi'
 import { useFetchInvoices } from '../../hooks/fetchs/useFetchInvoices'
+import { useFilterInvoices } from '../../hooks/invoices/useFilterInvoices'
+
 
 export function FiltersInvoices () {
   const idInputCompany = useId()
@@ -11,39 +12,9 @@ export function FiltersInvoices () {
   const idInputDateFrom = useId()
   const idInputDateTo = useId()
   const formRef = useRef(null)
-  const { updateInvoicesData } = useInvoices()
   const { fetchData } = useFetchInvoices()
-  const API_URL = import.meta.env.VITE_API_URL
-
-  const handledSubmit = async (e) => {
-    e.preventDefault()
-    const formData = Object.fromEntries(new FormData(e.target))
-    const filteredData = Object.entries(formData).reduce((acc, cv) => {
-      if (cv[1] !== '') {
-        acc[cv[0]] = cv[1]
-        return acc
-      }
-      return acc
-    }, {})
-    try {
-      const res = await fetch(`${API_URL}/home/filterInvoices`, {
-        credentials: 'include',
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(filteredData)
-      })
-      const response = await res.json()
-      const data = response.invoices.map(i => ({
-        ...i,
-        id: i._id
-      }))
-      updateInvoicesData({ data })
-    } catch (error) {
-      console.error('Internal server error', error)
-    }
-  }
+  const {handledSubmit} = useFilterInvoices()
+  
 
   const handleClear = () => {
     fetchData()
