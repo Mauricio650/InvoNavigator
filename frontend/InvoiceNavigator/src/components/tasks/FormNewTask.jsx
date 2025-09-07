@@ -17,17 +17,17 @@ export function FormNewTask () {
   }
 
   return (
-    <article className='w-full  text-sky-900 backdrop-blur-md 2xl:px-6 2xl:py-4 2xl:mt-4  rounded-xl shadow 2xl:p-6 max-w-xl mx-auto'>
+    <article className='text-sky-900 backdrop-blur-md rounded-xl'>
       <h2 className='text-center text-xs 2xl:text-xl font-semibold text-gray-800 2xl:mb-4'>
         Add New Task
       </h2>
-      <form onSubmit={handleSubmit} className='flex p-1 flex-col items-center gap-1 2xl:gap-4'>
+      <form onSubmit={handleSubmit} className='flex p-4 flex-col justify-center items-evenly gap-3'>
         <input
           ref={inputRef}
           type='text'
           name='task'
           placeholder='Enter your task...'
-          className='flex-1 w-full 2xl:px-4 2xl:py-3 text-xs 2xl:text-lg rounded-lg shadow-md bg-white/80 placeholder-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400'
+          className='flex-1 w-full  p-2 text-xs 2xl:text-lg rounded-lg shadow-md bg-white/80 placeholder-gray-500 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400'
           required
         />
         <button

@@ -18,7 +18,7 @@ export function StatusDaily () {
   if (error) toast.warning('Error retrieving information of daily invoices status, please try again')
 
   return (
-    <section className='h-full 2xl:h-1/3  flex flex-col justify-center items-center  bg-gradient-to-r from-indigo-100 to-white backdrop-blur-md rounded-xl shadow-md px-6 py-4 mt-6 mb-4 w-full'>
+    <section className='flex flex-col justify-center items-center  bg-white/60 backdrop-blur-md rounded-xl shadow-md px-6 py-4 mt-6 mb-4 w-full'>
       <h2 className='text-center text-xs 2xl:text-xl font-bold text-gray-800 2xl:mb-4'>
         Daily Invoice Status
       </h2>

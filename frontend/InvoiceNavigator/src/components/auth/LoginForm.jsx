@@ -36,22 +36,6 @@ export function LoginForm () {
   }
 
   return (
-    <div className='min-h-screen w-full relative bg-white'>
-      <div
-        className='absolute inset-0 z-0'
-        style={{
-          background: '#ffffff',
-          backgroundImage: `
-        radial-gradient(
-          circle at top center,
-          rgba(70, 130, 180, 0.5),
-          transparent 70%
-        )
-      `,
-          filter: 'blur(80px)',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
 
       <section className=' w-screen h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500'>
         <article className='z-2 bg-sky-950 flex flex-col justify-center items-center shadow-sky-950 shadow-lg p-5 text-white font-mono border-1 border-sky-900 rounded-md'>
@@ -121,7 +105,6 @@ export function LoginForm () {
 
       </section>
 
-    </div>
 
   )
 }

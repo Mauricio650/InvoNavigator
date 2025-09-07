@@ -55,13 +55,12 @@ export function DatagridTable () {
   ]
 
   return (
-    <Box sx={{ height: '100%', width: '100%' }}>
+    <Box sx={{ height: 640, width: '100%' }}>
       <DataGrid
         showToolbar
         rows={rows}
         columns={columns}
         initialState={{ pagination: { paginationModel }, sorting: { sortModel: [{ field: 'date', sort: 'asc' }] } }}
-        pageSizeOptions={[10]}
         sx={{
           border: 0,
           '& .MuiDataGrid-columnHeaderTitle': {

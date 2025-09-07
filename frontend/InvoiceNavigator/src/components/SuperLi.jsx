@@ -5,8 +5,8 @@ export const SuperLi = ({ text, path, icon: Icon }) => {
   const isActive = location.pathname === path || location.pathname === '/home/' + path
   return (
     <li className='relative flex items-center gap-4 text-lg '>
-      {isActive && <div className='absolute bg-sky-400 l-1 w-2 h-15 rounded-r-xl shadow-2xl' />}
-      <div className='flex items-center gap-4 ml-10 h-10'>
+      {isActive && <div className='absolute bg-sky-400 l-1 w-2 h-10 rounded-r-xl shadow-2xl' />}
+      <div className='flex items-center ml-3 h-8'>
         <NavLink
           to={path}
           className={() => {

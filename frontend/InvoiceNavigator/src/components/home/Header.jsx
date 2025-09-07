@@ -17,7 +17,7 @@ export function Header () {
           <SuperLi path='analytics' text='' icon={BiAnalyse} />
           <SuperLi path='settings' text='' icon={BiSlider} />
           <li className='relative flex items-center gap-4 text-lg '>
-            <div className='flex items-center gap-4 ml-10 h-10'>
+            <div className='flex items-center ml-3'>
               <button
                 onClick={() => logOutREQ()}
                 className='cursor-pointer flex justify-center items-center gap-4 hover:text-sky-400 transition-all duration-200'
