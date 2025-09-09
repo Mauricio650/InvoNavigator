@@ -7,9 +7,9 @@ import { NavLink } from 'react-router-dom'
 export function Menu () {
   const { user } = useContext(AuthContext)
   return (
-    <article className='w-full h-1/2 flex flex-col justify-center items-center gap-3'>
+    <article className='flex flex-col justify-center items-center gap-3 bg-white/40 backdrop-blur-md py-3 rounded-lg'>
       <ProfileLogo />
-      <h2>{user.user.fullName}</h2>
+      <h2 className='font-mono font-bold text-gray-500 text-lg'>{user.user.fullName}</h2>
       <NavLink to='changePassword'>
         <BtnClassic>
           New password

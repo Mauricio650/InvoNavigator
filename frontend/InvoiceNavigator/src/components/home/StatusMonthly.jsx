@@ -21,7 +21,7 @@ export function StatusMonthly () {
       <header className='relative overflow-hidden border-1 p-2 border-sky-50 shine w-full flex justify-center items-center bg-sky-500/90 backdrop-blur-lg rounded-xl shadow-lg'>
         <h1
           style={{ fontFamily: ' \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif ' }}
-          className='text-2xl text-sky-950 font-semibold'
+          className='sm:text-2xl text-sky-950 font-semibold'
         >
           Monthly Invoice Status
         </h1>

@@ -7,7 +7,7 @@ export function Tasks () {
   const { tasks, deleteTask, changeStatusTask } = useContext(TasksContext)
   const { user } = useAuth()
   return (
-    <div className='rounded-xl h-full w-full'>
+    <div className='rounded-xl h-[300px] sm:h-full w-full scroll-auto'>
       {tasks?.length === 0 && (
         <div className='flex flex-col items-center justify-center h-full gap-4 text-center empty-fade'>
           <BiTaskX className='text-6xl text-blue-400 drop-shadow-md' />
@@ -20,16 +20,16 @@ export function Tasks () {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className='flex items-center justify-between bg-white/60 backdrop-blur-md rounded-xl px-4 py-2 shadow-sm hover:shadow-md transition-all hover:bg-gray-200 duration-200'
+            className='flex items-center justify-between bg-white/60 backdrop-blur-md rounded-xl p-1 sm:px-4 sm:py-2 shadow-sm hover:shadow-md transition-all hover:bg-gray-200 duration-200'
           >
             {/* Left: icon + task name */}
             <div className='flex items-center gap-3'>
               {task.status === 'completed'
                 ? (
-                  <BiCheckCircle size={28} className='text-green-500' />
+                  <BiCheckCircle size={25} className='text-green-500' />
                   )
                 : (
-                  <BiTimeFive size={28} className='text-yellow-500 ' />
+                  <BiTimeFive size={25} className='text-yellow-500 ' />
                   )}
 
               <span className={`text-sm sm:text-base font-medium ${task.status === 'completed' ? 'line-through text-gray-400' : 'text-gray-800'}`}>
@@ -44,7 +44,7 @@ export function Tasks () {
                   title='Mark as done'
                   className='text-green-600 hover:text-green-800 transition'
                 >
-                  <BiCheck size={28} />
+                  <BiCheck size={25} />
                 </button>
               )}
               <button
@@ -52,7 +52,7 @@ export function Tasks () {
                 title='Delete'
                 className='text-red-500 hover:text-red-700 transition'
               >
-                <BiTrash size={28} />
+                <BiTrash size={25} />
               </button>
             </div>
           </li>

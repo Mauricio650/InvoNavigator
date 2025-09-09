@@ -10,11 +10,11 @@ export function Analytics () {
         <FiltersInvoices />
       </article>
       <article className='flex flex-col w-full  2xl:h-[600px] bg-white/60 backdrop-blur-md p-2 2xl:p-4 rounded-xl shadow-lg'>
-        <div className='flex w-full 2xl:h-1/2'>
-          <section className='w-[150px] sm:w-[250px] 2xl:w-1/2 flex items-center justify-center'>
+        <div className='flex flex-col sm:flex-row justify-evenly items-center w-full 2xl:h-1/2'>
+          <section className='w-[180px] sm:w-[250px] flex items-center justify-center'>
             <DoughnutChart />
           </section>
-          <section className='w-[150px] sm:w-[250px] 2xl:w-1/2 flex items-center justify-center'>
+          <section className='w-[135px] sm:w-[250px]  flex items-center justify-center'>
             <DoughnutChartNotes />
           </section>
         </div>

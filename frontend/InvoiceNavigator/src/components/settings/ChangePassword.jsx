@@ -14,8 +14,11 @@ export function ChangePassword () {
   
 
   return (
-    <article className='w-full h-1/2 flex flex-col justify-center items-center gap-3'>
-      <form className='bg-sky-900 text-sky-100 flex flex-col justify-center items-center gap-6 p-10 rounded shadow-lg' onSubmit={handleSubmit}>
+    <article className='w-full flex flex-col justify-center items-center gap-3'>
+      <form className='bg-sky-900 text-sky-100 flex flex-col justify-center items-center gap-6 p-5 rounded shadow-lg' onSubmit={handleSubmit}>
+        <div>
+          <img src="/svg/lock-svgrepo-com.svg" className='w-[80px] filter drop-shadow-md drop-shadow-black/50' alt="SVG of lock" />
+        </div>
 
         <label className='sr-only' htmlFor={idInputPasswordOLD}>Current Password</label>
         <div className='relative w-full flex justify-center'>

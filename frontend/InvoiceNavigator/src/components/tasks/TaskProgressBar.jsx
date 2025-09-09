@@ -14,30 +14,20 @@ export function TaskProgressBar () {
   return (
     <div
       style={{ fontFamily: ' \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif ' }}
-      className='w-full flex  justify-between items-center'
+      className='w-full flex  sm:justify-between items-center'
     >
       <h1
-        className='text-sky-900 text-2xl font-bold'
+        className='text-sky-900 sm:text-2xl font-bold'
       >
         Hi {username}!
       </h1>
 
-      <div className='flex items-center w-xs'>
-
-        <div className='w-md flex justify-end mr-5'>
-          <p className='text-sky-800 font-medium'>{percentage}% Task Completed</p>
+      <article className='flex-1 flex justify-end gap-2 items-center'>
+        <p className='font-bol text-xs sm:text-md text-white'>{tasks.length == 0 ? 'No tasks' : 'Task completed'} {percentage}%</p>
+        <div className='relative w-[100px] rounded-full bg-white h-2'>
+          <div style={{'width': percentage}} className={`absolute h-[100%] rounded-full bg-blue-600`}></div>
         </div>
-
-        <div className='flex items-center justify-between w-full'>
-          <div className='w-full bg-white rounded-full h-2'>
-            <div
-              className='bg-blue-700 h-2 rounded-full'
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-        </div>
-
-      </div>
+      </article>
 
     </div>
   )
