@@ -26,7 +26,7 @@ export function useFetchInvoices () {
   useEffect(() => {
     fetchData()
 
-    const intervalID = setInterval(fetchData, 3600000)
+    const intervalID = setInterval(fetchData, 10000)
 
     return () => {
       clearInterval(intervalID)

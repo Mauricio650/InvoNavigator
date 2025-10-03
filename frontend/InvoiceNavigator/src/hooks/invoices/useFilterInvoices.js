@@ -15,6 +15,7 @@ const { updateInvoicesData } = useInvoices()
       }
       return acc
     }, {})
+    console.log(filteredData)
     try {
       const res = await fetch(`${API_URL}/home/filterInvoices`, {
         credentials: 'include',
