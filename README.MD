@@ -56,6 +56,10 @@ it's a project created to improve invoices management in companies, providing fu
 >  🧩 Note: The Backend of this project is available in a separate repository
 [Invoice navigator Backend](https://github.com/Mauricio650/InvoNavigatorBackend)
 
+>  🧩 Note: If you want to see the projects logging with the following credentials, can not use admin panel but you can see the others actions.
+User = User4
+Password = ContraInvi2
+
 ## 🧰 Tech stack
 
 - **Frontend:** React, React Router DOM, js, html,CSS, TailwindCSS
