@@ -2,6 +2,8 @@
 
 An enterprise web platform designed based on real business processes within a company.
 
+![alt text](image.png)
+
 ![Status](https://img.shields.io/badge/finished-green?style=for-the-badge)
 
 ## 📚 Table of Contents
